@@ -1,14 +1,14 @@
 //
-//  BLRiotChampion.m
+//  BLChampionDto.m
 //  riot-objc
 //
 //  Created by Ash K on 12/14/13.
 //  Copyright (c) 2013 Ash K. All rights reserved.
 //
 
-#import "BLRiotChampion.h"
+#import "BLChampionDto.h"
 
-@implementation BLRiotChampion
+@implementation BLChampionDto
 
 - (id)init {
     return [self initWithName:@""];

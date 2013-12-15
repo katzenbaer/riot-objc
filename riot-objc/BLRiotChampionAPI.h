@@ -7,9 +7,10 @@
 //
 
 #import "BLRiotAPI.h"
+#import "BLChampionListDto.h"
 
 @interface BLRiotChampionAPI : BLRiotAPI
 
-- (NSArray *)allChampions;
+- (BLChampionListDto *)requestChampionsWithError:(NSError **)error;
 
 @end

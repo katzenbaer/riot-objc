@@ -7,21 +7,30 @@
 //
 
 #import "BLRiotChampionAPI.h"
-#import "BLRiotChampion.h"
 
 @implementation BLRiotChampionAPI
 
-- (NSArray *)allChampions {
-    NSString *championString = [NSString stringWithFormat:API_CHAMPION, self.region];
+- (BLChampionListDto *)requestChampionsWithError:(NSError *__autoreleasing *)error {
+    NSString *championString = [NSString stringWithFormat:API_CHAMPION,
+                                self.region];
     
-    NSData *data = [self requestWithUrl:[NSURL URLWithString:championString]];
-    NSError *error = nil;
+    NSError *_error, *httpError = nil;
+    
+    NSData *data = [self requestWithUrl:[NSURL URLWithString:championString] error:&httpError];
+    
+    if (httpError) {
+        NSLog(@"HTTP Error: %@", httpError);
+        *error = [NSError errorWithDomain:@"HTTPError" code:httpError.code userInfo:httpError.userInfo];
+        return nil;
+    }
+    
     NSObject *obj = [NSJSONSerialization JSONObjectWithData:data
                                                     options:NSJSONReadingAllowFragments
-                                                      error:&error];
+                                                      error:&_error];
     
-    if (error) {
-        NSLog(@"Error: %@", error);
+    if (_error) {
+        NSLog(@"JSON Error: %@", _error);
+        *error = [NSError errorWithDomain:@"JSONError" code:httpError.code userInfo:httpError.userInfo];
         return nil;
     }
     
@@ -29,8 +38,12 @@
     if ([obj isKindOfClass:[NSDictionary class]]) {
         NSArray *champions = [(NSDictionary *)obj valueForKey:@"champions"];
         for (NSDictionary *champion in champions) {
-            BLRiotChampion *c = [[BLRiotChampion alloc] initWithName:champion[@"name"]];
-            NSArray *props = @[@"active", @"attackRank", @"botEnabled", @"botMmEnabled", @"defenseRank", @"difficultyRank", @"freeToPlay", @"magicRank", @"rankedPlayEnabled"];
+            BLChampionDto *c = [[BLChampionDto alloc]
+                                initWithName:champion[@"name"]];
+            NSArray *props = @[@"active", @"attackRank", @"botEnabled",
+                               @"botMmEnabled", @"defenseRank",
+                               @"difficultyRank", @"freeToPlay", @"magicRank",
+                               @"rankedPlayEnabled"];
             c._id = champion[@"id"];
             
             for (NSString *prop in props) {
@@ -40,7 +53,7 @@
             [result addObject:c];
         }
     }
-    return [NSArray arrayWithArray:result];
+    return [[BLChampionListDto alloc] initWithChampions:result];
 }
 
 @end

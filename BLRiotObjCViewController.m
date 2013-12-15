@@ -9,7 +9,7 @@
 #import "BLRiotObjCViewController.h"
 
 #import "BLRiotChampionAPI.h"
-#import "BLRiotChampion.h"
+#import "BLChampionListDto.h"
 
 @interface BLRiotObjCViewController ()
 
@@ -36,12 +36,18 @@
     [myLabel sizeToFit];
     [self.view addSubview:myLabel];
     
-    BLRiotChampionAPI *api = [[BLRiotChampionAPI alloc] initWithRegion:@"na"];
-    NSArray *champions = [api allChampions];
+    NSError *error = nil;
     
-    NSLog(@"Champions");
-    for (BLRiotChampion *champion in champions) {
-        NSLog(@"\t%d: %@", champion._id.integerValue, champion.name);
+    BLRiotChampionAPI *api = [[BLRiotChampionAPI alloc] initWithRegion:@"na"];
+    BLChampionListDto *champions = [api requestChampionsWithError:&error];
+    
+    if (error) {
+        NSLog(@"Error: %@", error);
+    } else {
+        NSLog(@"Champions");
+        for (BLChampionDto *champion in champions.champions) {
+            NSLog(@"\t%d: %@", champion._id.integerValue, champion.name);
+        }
     }
 }
 

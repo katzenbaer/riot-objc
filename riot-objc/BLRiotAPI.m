@@ -45,21 +45,21 @@
         [NSException raise:@"Invalid region" format:@"Region must be one of the following: %@", [regions componentsJoinedByString:@", "]];
 }
 
-- (NSData *)requestWithUrl:(NSURL *)url {
+- (NSData *)requestWithUrl:(NSURL *)url error:(NSError *__autoreleasing *)error {
     NSString *s = [[url absoluteString] stringByAppendingString:API_KEY];
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:s]];
     NSURLResponse *response = nil;
-    NSError *error = nil;
+    NSError *_error = nil;
     NSData *data = [NSURLConnection sendSynchronousRequest:req
                                          returningResponse:&response
-                                                     error:&error];
-    if (error) {
-        NSLog(@"Error: %@", error);
+                                                     error:&_error];
+    if (_error) {
+        NSLog(@"HTTP Error: %@", _error);
+        NSLog(@"Response: %@", response);
+        NSLog(@"Response Data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        *error = [NSError errorWithDomain:@"HTTPError" code:_error.code userInfo:_error.userInfo];
         return nil;
     }
-    
-    //NSLog(@"Response: %@", response);
-    //NSLog(@"Response Data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     return data;
 }
 

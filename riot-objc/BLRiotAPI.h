@@ -38,6 +38,6 @@
 
 - (NSURL *)endpointUrl;
 
-- (NSData *)requestWithUrl:(NSURL *)url;
+- (NSData *)requestWithUrl:(NSURL *)url error:(NSError **)error;
 
 @end

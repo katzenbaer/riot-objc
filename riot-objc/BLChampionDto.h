@@ -1,12 +1,12 @@
 //
-//  BLRiotChampion.h
+//  BLChampionDto.h
 //  riot-objc
 //
 //  Created by Ash K on 12/14/13.
 //  Copyright (c) 2013 Ash K. All rights reserved.
 //
 
-@interface BLRiotChampion : NSObject
+@interface BLChampionDto : NSObject
 
 @property (nonatomic, strong) NSNumber *_id;
 @property (nonatomic, strong) NSString *name;
