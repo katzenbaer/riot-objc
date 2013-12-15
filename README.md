@@ -6,7 +6,7 @@ Currently, it only supports the champions endpoint, but is easily extensible to 
 
 Usage
 =========
-**Live code examples can be seen in `BLRiotObjCViewController.m`.**
+Live code examples can be seen in `BLRiotObjCViewController.m`.
 
 Credits & Attributions
 ==========
