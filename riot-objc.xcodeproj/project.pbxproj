@@ -19,6 +19,10 @@
 		CD374F8D185D7053003B2638 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD374F75185D7053003B2638 /* UIKit.framework */; };
 		CD374F95185D7053003B2638 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD374F93185D7053003B2638 /* InfoPlist.strings */; };
 		CD374F97185D7053003B2638 /* riot_objcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CD374F96185D7053003B2638 /* riot_objcTests.m */; };
+		CD374FA2185D7149003B2638 /* BLRiotAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CD374FA1185D7149003B2638 /* BLRiotAPI.m */; };
+		CD374FA6185D761C003B2638 /* BLRiotObjCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD374FA5185D761C003B2638 /* BLRiotObjCViewController.m */; };
+		CD374FA9185D76A0003B2638 /* BLRiotChampion.m in Sources */ = {isa = PBXBuildFile; fileRef = CD374FA8185D76A0003B2638 /* BLRiotChampion.m */; };
+		CD374FAC185D7A67003B2638 /* BLRiotChampionAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CD374FAB185D7A67003B2638 /* BLRiotChampionAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,14 @@
 		CD374F92185D7053003B2638 /* riot-objcTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "riot-objcTests-Info.plist"; sourceTree = "<group>"; };
 		CD374F94185D7053003B2638 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CD374F96185D7053003B2638 /* riot_objcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = riot_objcTests.m; sourceTree = "<group>"; };
+		CD374FA0185D7149003B2638 /* BLRiotAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLRiotAPI.h; sourceTree = "<group>"; };
+		CD374FA1185D7149003B2638 /* BLRiotAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLRiotAPI.m; sourceTree = "<group>"; };
+		CD374FA4185D761C003B2638 /* BLRiotObjCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BLRiotObjCViewController.h; path = ../BLRiotObjCViewController.h; sourceTree = "<group>"; };
+		CD374FA5185D761C003B2638 /* BLRiotObjCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BLRiotObjCViewController.m; path = ../BLRiotObjCViewController.m; sourceTree = "<group>"; };
+		CD374FA7185D76A0003B2638 /* BLRiotChampion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLRiotChampion.h; sourceTree = "<group>"; };
+		CD374FA8185D76A0003B2638 /* BLRiotChampion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLRiotChampion.m; sourceTree = "<group>"; };
+		CD374FAA185D7A67003B2638 /* BLRiotChampionAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLRiotChampionAPI.h; sourceTree = "<group>"; };
+		CD374FAB185D7A67003B2638 /* BLRiotChampionAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLRiotChampionAPI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +119,10 @@
 		CD374F77185D7053003B2638 /* riot-objc */ = {
 			isa = PBXGroup;
 			children = (
+				CD374FA3185D75E9003B2638 /* BLRiotAPI */,
+				CD374FAD185D7A70003B2638 /* BLRiotModels */,
+				CD374FA4185D761C003B2638 /* BLRiotObjCViewController.h */,
+				CD374FA5185D761C003B2638 /* BLRiotObjCViewController.m */,
 				CD374F80185D7053003B2638 /* BLAppDelegate.h */,
 				CD374F81185D7053003B2638 /* BLAppDelegate.m */,
 				CD374F83185D7053003B2638 /* Images.xcassets */,
@@ -142,6 +158,26 @@
 				CD374F93185D7053003B2638 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD374FA3185D75E9003B2638 /* BLRiotAPI */ = {
+			isa = PBXGroup;
+			children = (
+				CD374FA0185D7149003B2638 /* BLRiotAPI.h */,
+				CD374FA1185D7149003B2638 /* BLRiotAPI.m */,
+				CD374FAA185D7A67003B2638 /* BLRiotChampionAPI.h */,
+				CD374FAB185D7A67003B2638 /* BLRiotChampionAPI.m */,
+			);
+			name = BLRiotAPI;
+			sourceTree = "<group>";
+		};
+		CD374FAD185D7A70003B2638 /* BLRiotModels */ = {
+			isa = PBXGroup;
+			children = (
+				CD374FA7185D76A0003B2638 /* BLRiotChampion.h */,
+				CD374FA8185D76A0003B2638 /* BLRiotChampion.m */,
+			);
+			name = BLRiotModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +277,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD374F82185D7053003B2638 /* BLAppDelegate.m in Sources */,
+				CD374FA2185D7149003B2638 /* BLRiotAPI.m in Sources */,
+				CD374FA9185D76A0003B2638 /* BLRiotChampion.m in Sources */,
+				CD374FAC185D7A67003B2638 /* BLRiotChampionAPI.m in Sources */,
+				CD374FA6185D761C003B2638 /* BLRiotObjCViewController.m in Sources */,
 				CD374F7E185D7053003B2638 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

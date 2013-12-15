@@ -8,6 +8,8 @@
 
 #import "BLAppDelegate.h"
 
+#import "BLRiotObjCViewController.h"
+
 @implementation BLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -16,6 +18,8 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    [self.window setRootViewController:[[BLRiotObjCViewController alloc] init]];
     return YES;
 }
 
