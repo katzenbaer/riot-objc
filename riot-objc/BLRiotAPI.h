@@ -30,6 +30,11 @@
 // team-v2.1 [EUNE, EUW, BR, TR, NA]
 #define API_TEAM                API_ENDPOINT @"/api/%@/v2.1/team/by-summoner/%d"
 
+// Errors
+#define AUTHENTICATION_ERROR    @"AuthenticationError"
+#define RESPONSE_ERROR          @"ResponseError"
+#define PARSE_ERROR             @"ParseError"
+
 @interface BLRiotAPI : NSObject <NSURLConnectionDelegate>
 
 @property (nonatomic, strong) NSString *region;

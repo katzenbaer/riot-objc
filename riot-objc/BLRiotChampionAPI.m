@@ -19,8 +19,8 @@
     NSData *data = [self requestWithUrl:[NSURL URLWithString:championString] error:&httpError];
     
     if (httpError) {
-        NSLog(@"HTTP Error: %@", httpError);
-        *error = [NSError errorWithDomain:@"HTTPError" code:httpError.code userInfo:httpError.userInfo];
+        //NSLog(@"HTTP Error: %@", httpError);
+        *error = [NSError errorWithDomain:RESPONSE_ERROR code:httpError.code userInfo:httpError.userInfo];
         return nil;
     }
     
@@ -29,8 +29,8 @@
                                                       error:&_error];
     
     if (_error) {
-        NSLog(@"JSON Error: %@", _error);
-        *error = [NSError errorWithDomain:@"JSONError" code:httpError.code userInfo:httpError.userInfo];
+        //NSLog(@"JSON Error: %@", _error);
+        *error = [NSError errorWithDomain:PARSE_ERROR code:_error.code userInfo:_error.userInfo];
         return nil;
     }
     
