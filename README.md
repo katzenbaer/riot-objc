@@ -29,5 +29,5 @@ Live code examples can be seen in `BLRiotObjCViewController.m`.
 
 Credits & Attributions
 ==========
-Riot Games for the API
+Riot Games for the API  
 API wrappers in other languages: https://developer.riotgames.com/discussion/riot-games-api/show/iXR9Vl2A
