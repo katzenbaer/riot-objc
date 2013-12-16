@@ -12,5 +12,6 @@
 @interface BLRiotChampionAPI : BLRiotAPI
 
 - (BLChampionListDto *)requestChampionsWithError:(NSError **)error;
+- (BLChampionListDto *)requestChampionsFreeToPlay:(Boolean)freeToPlay Error:(NSError **)error;
 
 @end

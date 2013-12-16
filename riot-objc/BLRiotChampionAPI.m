@@ -11,12 +11,18 @@
 @implementation BLRiotChampionAPI
 
 - (BLChampionListDto *)requestChampionsWithError:(NSError *__autoreleasing *)error {
+    return [self requestChampionsFreeToPlay:NO Error:error];
+}
+
+- (BLChampionListDto *)requestChampionsFreeToPlay:(Boolean)freeToPlay Error:(NSError **)error {
     NSString *championString = [NSString stringWithFormat:API_CHAMPION,
                                 self.region];
     
     NSError *_error, *httpError = nil;
     
-    NSData *data = [self requestWithUrl:[NSURL URLWithString:championString] error:&httpError];
+    NSString *f2p_param = [@"freeToPlay=" stringByAppendingString:(freeToPlay) ? @"true" : @"false"];
+    
+    NSData *data = [self requestWithUrl:[NSURL URLWithString:championString] Params:@[f2p_param] error:&httpError];
     
     if (httpError) {
         //NSLog(@"HTTP Error: %@", httpError);

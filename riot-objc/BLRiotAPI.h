@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define API_ENDPOINT            @"https://prod.api.pvp.net"
-#define API_KEY                 @"?api_key=" @"YOUR-KEY-HERE"
+#define API_KEY                 @"api_key=" @"YOUR-KEY-HERE"
 
 // champion-v1.1 [NA, EUW, EUNE]
 #define API_CHAMPION            API_ENDPOINT @"/api/lol/%@/v1.1/champion"
@@ -44,5 +44,6 @@
 - (NSURL *)endpointUrl;
 
 - (NSData *)requestWithUrl:(NSURL *)url error:(NSError **)error;
+- (NSData *)requestWithUrl:(NSURL *)url Params:(NSArray *)params error:(NSError **)error;
 
 @end

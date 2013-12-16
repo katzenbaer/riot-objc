@@ -39,13 +39,13 @@
     NSError *error = nil;
     
     BLRiotChampionAPI *api = [[BLRiotChampionAPI alloc] initWithRegion:@"na"];
-    BLChampionListDto *champions = [api requestChampionsWithError:&error];
+    BLChampionListDto *championList = [api requestChampionsFreeToPlay:false Error:&error];
     
     if (error) {
         NSLog(@"Error: %@", error);
     } else {
-        NSLog(@"Champions");
-        for (BLChampionDto *champion in champions.champions) {
+        NSLog(@"Champions (Count: %d)", championList.champions.count);
+        for (BLChampionDto *champion in championList.champions) {
             NSLog(@"\t%d: %@", champion._id.integerValue, champion.name);
         }
     }

@@ -45,8 +45,15 @@
         [NSException raise:@"Invalid region" format:@"Region must be one of the following: %@", [regions componentsJoinedByString:@", "]];
 }
 
-- (NSData *)requestWithUrl:(NSURL *)url error:(NSError *__autoreleasing *)error {
-    NSString *s = [[url absoluteString] stringByAppendingString:API_KEY];
+- (NSData *)requestWithUrl:(NSURL *)url Params:(NSArray *)params error:(NSError *__autoreleasing *)error {
+    
+    // Add API key to parameters
+    NSMutableArray *_params = [NSMutableArray arrayWithArray:params];
+    [_params addObject:API_KEY];
+    NSString *s = [[url absoluteString] stringByAppendingFormat:@"?%@", [_params componentsJoinedByString:@"&"]];
+    
+    NSLog(@"Requesting from '%@'", s);
+    // Create NSURLRequest and NSURLConnection
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:s]];
     NSHTTPURLResponse *response = nil;
     NSError *_error = nil;
@@ -84,6 +91,11 @@
         return nil;
     }
     return data;
+    
+}
+
+- (NSData *)requestWithUrl:(NSURL *)url error:(NSError *__autoreleasing *)error {
+    return [self requestWithUrl:url Params:@[] error:error];
 }
 
 @end
