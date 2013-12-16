@@ -22,6 +22,7 @@ Riot Games for the API
 API wrappers in other languages: https://developer.riotgames.com/discussion/riot-games-api/show/iXR9Vl2A
 
 ### Contributing
+If you want to help contribute, just open an Issue to let me know what you're working on. When you're done, simply submit a pull request.
 
 README Changelog
 ----------------
