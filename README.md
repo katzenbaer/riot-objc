@@ -34,7 +34,7 @@ License
 -------
 This software is licensed under GNU General Public License v3.
 
-Copyright (C) 2013 Ash K (im420blaziken[at]gmail) / Terrence J. Katzenbaer (tkatzenbaer@lytenight.com)
+Copyright (C) 2013 Ash K (im420blaziken[at]gmail) / Terrence J. Katzenbaer (tkatzenbaer [at] lytenight com)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
