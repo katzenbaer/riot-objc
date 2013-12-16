@@ -14,7 +14,7 @@
 // champion-v1.1 [NA, EUW, EUNE]
 #define API_CHAMPION            API_ENDPOINT @"/api/lol/%@/v1.1/champion"
 // game-v1.1 [EUW, EUNE, NA]
-#define API_GAME                API_ENDPOINT @"/api/lol/%@/v1.1/game/by-summoner/%d/recent"
+#define API_GAME                API_ENDPOINT @"/api/lol/%@/v1.1/game/by-summoner/%ld/recent"
 // league-v2.1 [EUNE, TR, NA, EUW, BR]
 #define API_LEAGUE              API_ENDPOINT @"/api/%@/v2.1/league/by-summoner/%d"
 // stats-v1.1 [EUW, NA, EUNE]
@@ -44,6 +44,6 @@
 - (NSURL *)endpointUrl;
 
 - (NSData *)requestWithUrl:(NSURL *)url error:(NSError **)error;
-- (NSData *)requestWithUrl:(NSURL *)url Params:(NSArray *)params error:(NSError **)error;
+- (NSData *)requestWithUrl:(NSURL *)url Params:(id)params error:(NSError **)error;
 
 @end

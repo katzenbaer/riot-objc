@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BLKeyValueObject.h"
 
 #import "BLChampionDto.h"
 
-@interface BLChampionListDto : NSObject
+@interface BLChampionListDto : BLKeyValueObject
 
-@property (nonatomic, strong) NSArray *champions;
+@property (nonatomic, strong) NSArray *champions; // The list of champion information.
 
 - (id)initWithChampions:(NSArray *)champions;
 

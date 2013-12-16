@@ -25,7 +25,6 @@
     NSData *data = [self requestWithUrl:[NSURL URLWithString:championString] Params:@[f2p_param] error:&httpError];
     
     if (httpError) {
-        //NSLog(@"HTTP Error: %@", httpError);
         *error = [NSError errorWithDomain:RESPONSE_ERROR code:httpError.code userInfo:httpError.userInfo];
         return nil;
     }
@@ -35,7 +34,6 @@
                                                       error:&_error];
     
     if (_error) {
-        //NSLog(@"JSON Error: %@", _error);
         *error = [NSError errorWithDomain:PARSE_ERROR code:_error.code userInfo:_error.userInfo];
         return nil;
     }
@@ -44,17 +42,7 @@
     if ([obj isKindOfClass:[NSDictionary class]]) {
         NSArray *champions = [(NSDictionary *)obj valueForKey:@"champions"];
         for (NSDictionary *champion in champions) {
-            BLChampionDto *c = [[BLChampionDto alloc]
-                                initWithName:champion[@"name"]];
-            NSArray *props = @[@"active", @"attackRank", @"botEnabled",
-                               @"botMmEnabled", @"defenseRank",
-                               @"difficultyRank", @"freeToPlay", @"magicRank",
-                               @"rankedPlayEnabled"];
-            c._id = champion[@"id"];
-            
-            for (NSString *prop in props) {
-                [c setValue:champion[prop] forKey:prop];
-            }
+            BLChampionDto *c = [[BLChampionDto alloc] initWithKVDictionary:champion];
             
             [result addObject:c];
         }

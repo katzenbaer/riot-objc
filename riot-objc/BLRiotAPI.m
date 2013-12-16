@@ -45,7 +45,23 @@
         [NSException raise:@"Invalid region" format:@"Region must be one of the following: %@", [regions componentsJoinedByString:@", "]];
 }
 
-- (NSData *)requestWithUrl:(NSURL *)url Params:(NSArray *)params error:(NSError *__autoreleasing *)error {
+- (NSData *)requestWithUrl:(NSURL *)url Params:(id)params error:(NSError *__autoreleasing *)error {
+    
+    // Parse params
+    if (![params isKindOfClass:[NSArray class]]) {
+        if (params == nil)
+            params = @[];
+        else if ([params isKindOfClass:[NSString class]])
+            params = @[params];
+        else {
+            if ([params respondsToSelector:@selector(stringValue)])
+                params = @[[params stringValue]];
+            else {
+                NSLog(@"Invalid params, had to discard: %@", params);
+                params = @[];
+            }
+        }
+    }
     
     // Add API key to parameters
     NSMutableArray *_params = [NSMutableArray arrayWithArray:params];
@@ -63,9 +79,6 @@
     if (_error || [response statusCode] != 200) {
         if ([response statusCode] != 0) {
             if ([response statusCode] != 0) {
-                //NSLog(@"HTTP Error! Status Code: %d", [response statusCode]);
-                //NSLog(@"Response Data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-                
                 NSString *reasonString = nil;
                 switch ([response statusCode]) {
                     case 400:
@@ -86,7 +99,7 @@
                 return nil;
             }
         }
-        //NSLog(@"Authentication Error: Check your API_KEY in `BLRiotAPI.h`!");
+        //Check your API_KEY in `BLRiotAPI.h`!
         *error = [NSError errorWithDomain:AUTHENTICATION_ERROR code:401 userInfo:@{@"api_key": API_KEY}];
         return nil;
     }
