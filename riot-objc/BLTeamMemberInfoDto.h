@@ -10,8 +10,8 @@
 
 @interface BLTeamMemberInfoDto : BLKeyValueObject
 
-@property (nonatomic, strong) NSString *inviteDate;
-@property (nonatomic, strong) NSString *joinDate;
+@property (nonatomic, strong) NSNumber *inviteDate;
+@property (nonatomic, strong) NSNumber *joinDate;
 @property (nonatomic, strong) NSNumber *playerId;
 @property (nonatomic, strong) NSString *status;
 

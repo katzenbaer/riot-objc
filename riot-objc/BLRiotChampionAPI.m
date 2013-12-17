@@ -15,34 +15,18 @@
 }
 
 - (BLChampionListDto *)requestChampionsFreeToPlay:(Boolean)freeToPlay Error:(NSError **)error {
-    NSString *championString = [NSString stringWithFormat:API_CHAMPION,
-                                self.region];
     
-    NSError *_error, *httpError = nil;
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:API_CHAMPION, self.region]];
+    NSString *param = [@"freeToPlay=" stringByAppendingString:(freeToPlay) ? @"true" : @"false"];
     
-    NSString *f2p_param = [@"freeToPlay=" stringByAppendingString:(freeToPlay) ? @"true" : @"false"];
-    
-    NSData *data = [self requestWithUrl:[NSURL URLWithString:championString] Params:@[f2p_param] error:&httpError];
-    
-    if (httpError) {
-        *error = [NSError errorWithDomain:RESPONSE_ERROR code:httpError.code userInfo:httpError.userInfo];
-        return nil;
-    }
-    
-    NSObject *obj = [NSJSONSerialization JSONObjectWithData:data
-                                                    options:NSJSONReadingAllowFragments
-                                                      error:&_error];
-    
-    if (_error) {
-        *error = [NSError errorWithDomain:PARSE_ERROR code:_error.code userInfo:_error.userInfo];
-        return nil;
-    }
+    NSObject *obj = [self requestJsonWithUrl:url Params:param Error:error];
+    if (*error) return nil;
     
     NSMutableArray *result = [NSMutableArray array];
     if ([obj isKindOfClass:[NSDictionary class]]) {
         NSArray *champions = [(NSDictionary *)obj valueForKey:@"champions"];
         for (NSDictionary *champion in champions) {
-            BLChampionDto *c = [[BLChampionDto alloc] initWithKVDictionary:champion];
+            BLChampionDto *c = [BLChampionDto newWithKVDictionary:champion];
             
             [result addObject:c];
         }

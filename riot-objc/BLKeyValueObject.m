@@ -27,4 +27,8 @@
     return self;
 }
 
++ (instancetype)newWithKVDictionary:(NSDictionary *)dict {
+    return [[[self class] alloc] initWithKVDictionary:dict];
+}
+
 @end

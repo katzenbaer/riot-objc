@@ -10,4 +10,11 @@
 
 @implementation BLTeamStatDetailDto
 
+- (id)initWithKVDictionary:(NSDictionary *)dict {
+    if (self = [super initWithKVDictionary:dict]) {
+        self.teamId = [BLTeamIdDto newWithKVDictionary:dict[@"teamId"]];
+    }
+    return self;
+}
+
 @end

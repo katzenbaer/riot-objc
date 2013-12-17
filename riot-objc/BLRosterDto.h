@@ -8,6 +8,8 @@
 
 #import "BLKeyValueObject.h"
 
+#import "BLTeamMemberInfoDto.h"
+
 @interface BLRosterDto : BLKeyValueObject
 
 @property (nonatomic, strong) NSArray *memberList;

@@ -57,6 +57,8 @@
 		CD862F071860D9D1003AEFD8 /* BLTeamDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862F051860D9D1003AEFD8 /* BLTeamDto.m */; };
 		CD862F0A1860D9E7003AEFD8 /* BLRiotTeamAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862F091860D9E7003AEFD8 /* BLRiotTeamAPI.m */; };
 		CD862F0B1860D9E7003AEFD8 /* BLRiotTeamAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862F091860D9E7003AEFD8 /* BLRiotTeamAPI.m */; };
+		CD862F0E1860F393003AEFD8 /* NSNumber+BoolString.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862F0D1860F393003AEFD8 /* NSNumber+BoolString.m */; };
+		CD862F0F1860F393003AEFD8 /* NSNumber+BoolString.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862F0D1860F393003AEFD8 /* NSNumber+BoolString.m */; };
 		CD9317CA185E6E8100FA4864 /* BLChampionListDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9317C9185E6E8100FA4864 /* BLChampionListDto.m */; };
 		CD958257185F67C500F62A76 /* BLPlayerDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD958256185F67C500F62A76 /* BLPlayerDto.m */; };
 		CD95825A185F68CA00F62A76 /* BLRawStatDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD958259185F68CA00F62A76 /* BLRawStatDto.m */; };
@@ -129,6 +131,8 @@
 		CD862F051860D9D1003AEFD8 /* BLTeamDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLTeamDto.m; sourceTree = "<group>"; };
 		CD862F081860D9E7003AEFD8 /* BLRiotTeamAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLRiotTeamAPI.h; sourceTree = "<group>"; };
 		CD862F091860D9E7003AEFD8 /* BLRiotTeamAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLRiotTeamAPI.m; sourceTree = "<group>"; };
+		CD862F0C1860F393003AEFD8 /* NSNumber+BoolString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+BoolString.h"; path = "riot-objc/NSNumber+BoolString.h"; sourceTree = "<group>"; };
+		CD862F0D1860F393003AEFD8 /* NSNumber+BoolString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+BoolString.m"; path = "riot-objc/NSNumber+BoolString.m"; sourceTree = "<group>"; };
 		CD9317C8185E6E8100FA4864 /* BLChampionListDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLChampionListDto.h; sourceTree = "<group>"; };
 		CD9317C9185E6E8100FA4864 /* BLChampionListDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLChampionListDto.m; sourceTree = "<group>"; };
 		CD958255185F67C500F62A76 /* BLPlayerDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLPlayerDto.h; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 		CD374F65185D7053003B2638 = {
 			isa = PBXGroup;
 			children = (
+				CD862F0C1860F393003AEFD8 /* NSNumber+BoolString.h */,
+				CD862F0D1860F393003AEFD8 /* NSNumber+BoolString.m */,
 				CD374F77185D7053003B2638 /* riot-objc */,
 				CD374F90185D7053003B2638 /* riot-objcTests */,
 				CD374F70185D7053003B2638 /* Frameworks */,
@@ -400,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD374F82185D7053003B2638 /* BLAppDelegate.m in Sources */,
+				CD862F0E1860F393003AEFD8 /* NSNumber+BoolString.m in Sources */,
 				CD374FA2185D7149003B2638 /* BLRiotAPI.m in Sources */,
 				CD958262185F694F00F62A76 /* BLRecentGamesDto.m in Sources */,
 				CD958257185F67C500F62A76 /* BLPlayerDto.m in Sources */,
@@ -437,6 +444,7 @@
 				CD862EEB1860D98D003AEFD8 /* BLTeamIdDto.m in Sources */,
 				CD95826B185F6BB100F62A76 /* BLKeyValueObject.m in Sources */,
 				CD862ED11860C8D3003AEFD8 /* BLLeagueDto.m in Sources */,
+				CD862F0F1860F393003AEFD8 /* NSNumber+BoolString.m in Sources */,
 				CD374F97185D7053003B2638 /* riot_objcTests.m in Sources */,
 				CD862EDB1860C8FB003AEFD8 /* BLRiotChampionAPI.m in Sources */,
 				CD958267185F6A7200F62A76 /* BLRiotGameAPI.m in Sources */,

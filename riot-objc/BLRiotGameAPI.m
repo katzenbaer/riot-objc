@@ -12,39 +12,25 @@
 
 - (BLRecentGamesDto *)requestGamesWithSummonerId:(NSNumber *)summonerId
                                            Error:(NSError *__autoreleasing *)error {
-    NSString *championString = [NSString stringWithFormat:API_GAME,
-                                self.region, summonerId.longValue];
     
-    NSError *_error, *httpError = nil;
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:API_GAME,
+                                       self.region, summonerId.longValue]];
     
-    NSData *data = [self requestWithUrl:[NSURL URLWithString:championString] Params:nil error:&httpError];
-    
-    if (httpError) {
-        *error = [NSError errorWithDomain:RESPONSE_ERROR code:httpError.code userInfo:httpError.userInfo];
-        return nil;
-    }
-    
-    NSObject *obj = [NSJSONSerialization JSONObjectWithData:data
-                                                    options:NSJSONReadingAllowFragments
-                                                      error:&_error];
-    
-    if (_error) {
-        *error = [NSError errorWithDomain:PARSE_ERROR code:_error.code userInfo:_error.userInfo];
-        return nil;
-    }
+    NSObject *obj = [self requestJsonWithUrl:url Error:error];
+    if (*error) return nil;
     
     NSMutableArray *result = [NSMutableArray array];
     if ([obj isKindOfClass:[NSDictionary class]]) {
         NSArray *games = [(NSDictionary *)obj valueForKey:@"games"];
         for (NSDictionary *game in games) {
-            BLGameDto *g = [[BLGameDto alloc] initWithKVDictionary:game];
+            BLGameDto *g = [BLGameDto newWithKVDictionary:game];
             
             {
                 NSMutableArray *result = [NSMutableArray array];
                 NSArray *fellowPlayers = [g fellowPlayers];
                 
                 for (NSDictionary *player in fellowPlayers) {
-                    [result addObject:[[BLPlayerDto alloc] initWithKVDictionary:player]];
+                    [result addObject:[BLPlayerDto newWithKVDictionary:player]];
                 }
                 
                 g.fellowPlayers = [NSArray arrayWithArray:result];
@@ -55,7 +41,7 @@
                 NSArray *statistics = [g statistics];
                 
                 for (NSDictionary *stat in statistics) {
-                    [result addObject:[[BLRawStatDto alloc] initWithKVDictionary:stat]];
+                    [result addObject:[BLRawStatDto newWithKVDictionary:stat]];
                 }
                 
                 g.statistics = [NSArray arrayWithArray:result];
@@ -64,9 +50,7 @@
             [result addObject:g];
         }
     }
-    return [[BLRecentGamesDto alloc] initWithKVDictionary:@{
-                                        @"games" : [NSArray arrayWithArray:result]
-                                        }];
+    return [BLRecentGamesDto newWithKVDictionary:@{@"games" : [NSArray arrayWithArray:result]}];
 }
 
 @end

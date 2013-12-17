@@ -12,41 +12,27 @@
 
 - (NSDictionary *)requestLeaguesWithSummonerId:(NSNumber *)summonerId
                                          Error:(NSError *__autoreleasing *)error {
-    NSString *championString = [NSString stringWithFormat:API_LEAGUE,
-                                self.region, summonerId.longValue];
     
-    NSError *_error, *httpError = nil;
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:API_LEAGUE,
+                                       self.region, summonerId.longValue]];
     
-    NSData *data = [self requestWithUrl:[NSURL URLWithString:championString] Params:nil error:&httpError];
-    
-    if (httpError) {
-        *error = [NSError errorWithDomain:RESPONSE_ERROR code:httpError.code userInfo:httpError.userInfo];
-        return nil;
-    }
-    
-    NSObject *obj = [NSJSONSerialization JSONObjectWithData:data
-                                                    options:NSJSONReadingAllowFragments
-                                                      error:&_error];
-    
-    if (_error) {
-        *error = [NSError errorWithDomain:PARSE_ERROR code:_error.code userInfo:_error.userInfo];
-        return nil;
-    }
+    NSObject *obj = [self requestJsonWithUrl:url Error:error];
+    if (*error) return nil;
     
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     if ([obj isKindOfClass:[NSDictionary class]]) {
         [(NSDictionary *)obj enumerateKeysAndObjectsUsingBlock:^(NSString *key,
                                                                  NSDictionary *val, BOOL *stop) {
         
-            BLLeagueDto *league = [[BLLeagueDto alloc] initWithKVDictionary:val];
+            BLLeagueDto *league = [BLLeagueDto newWithKVDictionary:val];
             result[key] = league;
             
             NSMutableArray *entries = [NSMutableArray array];
             
             for (NSDictionary *item in league.entries) {
-                BLLeagueItemDto *_item = [[BLLeagueItemDto alloc] initWithKVDictionary:item];
+                BLLeagueItemDto *_item = [BLLeagueItemDto newWithKVDictionary:item];
                 
-                if (item[@"miniSeries"] != nil) _item.miniSeries = [[BLMiniSeriesDto alloc] initWithKVDictionary:item[@"miniSeries"]];
+                if (item[@"miniSeries"] != nil) _item.miniSeries = [BLMiniSeriesDto newWithKVDictionary:item[@"miniSeries"]];
                 else _item.miniSeries = nil;
                 
                 [entries addObject:_item];

@@ -12,4 +12,6 @@
 
 - (id)initWithKVDictionary:(NSDictionary *)dict;
 
++ (instancetype)newWithKVDictionary:(NSDictionary *)dict;
+
 @end

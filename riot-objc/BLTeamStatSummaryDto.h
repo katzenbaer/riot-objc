@@ -14,6 +14,6 @@
 @interface BLTeamStatSummaryDto : BLKeyValueObject
 
 @property (nonatomic, strong) BLTeamIdDto *teamId;
-@property (nonatomic, strong) NSArray *teamStatDetails;
+@property (nonatomic, strong) NSSet *teamStatDetails;
 
 @end

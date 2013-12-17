@@ -8,6 +8,8 @@
 
 #import "BLRiotAPI.h"
 
+#import "BLTeamDto.h"
+
 @interface BLRiotTeamAPI : BLRiotAPI
 
 - (NSArray *)requestTeamsWithSummonerId:(NSNumber *)summonerId Error:(NSError **)error;

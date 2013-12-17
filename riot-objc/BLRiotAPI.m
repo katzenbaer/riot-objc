@@ -45,7 +45,7 @@
         [NSException raise:@"Invalid region" format:@"Region must be one of the following: %@", [regions componentsJoinedByString:@", "]];
 }
 
-- (NSData *)requestWithUrl:(NSURL *)url Params:(id)params error:(NSError *__autoreleasing *)error {
+- (NSData *)requestWithUrl:(NSURL *)url Params:(id)params Error:(NSError *__autoreleasing *)error {
     
     // Parse params
     if (![params isKindOfClass:[NSArray class]]) {
@@ -107,8 +107,40 @@
     
 }
 
-- (NSData *)requestWithUrl:(NSURL *)url error:(NSError *__autoreleasing *)error {
-    return [self requestWithUrl:url Params:@[] error:error];
+- (NSData *)requestWithUrl:(NSURL *)url Error:(NSError *__autoreleasing *)error {
+    return [self requestWithUrl:url
+                         Params:@[]
+                          Error:error];
+}
+
+- (NSObject *)requestJsonWithUrl:(NSURL *)url Error:(NSError *__autoreleasing *)error {
+    return [self requestJsonWithUrl:url
+                             Params:@[]
+                              Error:error];
+}
+
+- (NSObject *)requestJsonWithUrl:(NSURL *)url Params:(id)params
+                           Error:(NSError *__autoreleasing *)error {
+    
+    NSError *_error = nil;
+    NSData *data = [self requestWithUrl:url Params:params Error:&_error];
+    
+    if (_error) {
+        *error = [NSError errorWithDomain:RESPONSE_ERROR code:_error.code userInfo:_error.userInfo];
+        return nil;
+    }
+    
+    _error = nil;
+    NSObject *obj = [NSJSONSerialization JSONObjectWithData:data
+                                                    options:NSJSONReadingAllowFragments
+                                                      error:&_error];
+    
+    if (_error) {
+        *error = [NSError errorWithDomain:PARSE_ERROR code:_error.code userInfo:_error.userInfo];
+        return nil;
+    }
+
+    return obj;
 }
 
 @end

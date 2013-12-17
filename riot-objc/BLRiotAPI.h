@@ -43,7 +43,10 @@
 
 - (NSURL *)endpointUrl;
 
-- (NSData *)requestWithUrl:(NSURL *)url error:(NSError **)error;
-- (NSData *)requestWithUrl:(NSURL *)url Params:(id)params error:(NSError **)error;
+- (NSData *)requestWithUrl:(NSURL *)url Error:(NSError **)error;
+- (NSData *)requestWithUrl:(NSURL *)url Params:(id)params Error:(NSError **)error;
+
+- (NSObject *)requestJsonWithUrl:(NSURL *)url Error:(NSError **)error;
+- (NSObject *)requestJsonWithUrl:(NSURL *)url Params:(id)params Error:(NSError **)error;
 
 @end

@@ -10,4 +10,16 @@
 
 @implementation BLRosterDto
 
+- (id)initWithKVDictionary:(NSDictionary *)dict {
+    if (self = [super initWithKVDictionary:dict]) {
+        NSMutableArray *members = [NSMutableArray array];
+        for (NSDictionary *member in self.memberList) {
+            [members addObject:[BLTeamMemberInfoDto newWithKVDictionary:member]];
+        }
+        
+        self.memberList = [NSArray arrayWithArray:members];
+    }
+    return self;
+}
+
 @end
