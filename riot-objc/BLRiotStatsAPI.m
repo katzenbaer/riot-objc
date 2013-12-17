@@ -14,7 +14,7 @@
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:API_STATS_SUMMARY, self.region, summonerId.longValue]];
     
-    NSObject *obj = [self requestJsonWithUrl:url Params:[@"season=" stringByAppendingString:season]
+    NSObject *obj = [self requestJsonWithUrl:url Params:[@"season=" stringByAppendingString:[season stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
                                        Error:error];
     
     if (*error) return nil;
@@ -35,7 +35,7 @@
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:API_STATS_RANKED, self.region, summonerId.longValue]];
     
-    NSObject *obj = [self requestJsonWithUrl:url Params:[@"season=" stringByAppendingString:season] Error:error];
+    NSObject *obj = [self requestJsonWithUrl:url Params:[@"season=" stringByAppendingString:[season stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] Error:error];
     
     if (*error) return nil;
     

@@ -40,7 +40,7 @@
 
 - (BLSummonerDto *)requestSummonerWithSummonerName:(NSString *)summonerName Error:(NSError *__autoreleasing *)error {
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:API_SUMMONER_BYNAME, self.region, summonerName]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:API_SUMMONER_BYNAME, self.region, [summonerName stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     
     NSObject *obj = [self requestJsonWithUrl:url Error:error];
     
