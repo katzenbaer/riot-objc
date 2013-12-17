@@ -10,6 +10,12 @@
 
 #import "BLRiotChampionAPI.h"
 #import "BLRiotGameAPI.h"
+#import "BLRiotLeagueAPI.h"
+#import "BLRiotTeamAPI.h"
+#import "BLRiotStatsAPI.h"
+#import "BLRiotSummonerAPI.h"
+
+#import "NSNumber+BoolString.h"
 
 @interface BLRiotObjCViewController ()
 
@@ -35,12 +41,66 @@
     [myLabel setText:@"Hello, there."];
     [myLabel sizeToFit];
     [self.view addSubview:myLabel];
+
+    NSNumber *summonerId;
+#pragma mark - BLRiotSummonerAPI
+    {
+        NSError *error = nil;
+        BLRiotSummonerAPI *api = [[BLRiotSummonerAPI alloc] initWithRegion:@"na"];
+        BLSummonerDto *summoner = [api requestSummonerWithSummonerName:@"im420blaziken"
+                                                                 Error:&error];
+        
+        NSLog(@"BLRiotSummonerAPI");
+        NSLog(@"=================");
+        if (error) {
+            NSLog(@"Error: %@", error);
+            return;
+        } else {
+            NSLog(@"Object class: %@", [summoner class]);
+            
+            NSArray *props = @[@"_id", @"name", @"profileIconId", @"revisionDate",
+                               @"revisionDateStr", @"summonerLevel"];
+            for (NSString *p in props) {
+                NSLog(@"\t%@: %@", p, [summoner valueForKey:p]);
+            }
+            
+            summonerId = summoner._id;
+        }
+    }
     
+#pragma mark - BLRiotStatsAPI
+    {
+        NSError *error = nil;
+        BLRiotStatsAPI *api = [[BLRiotStatsAPI alloc] initWithRegion:@"na"];
+        BLPlayerStatsSummaryListDto *stats = [api requestStatsSummaryWithSummonerId:summonerId
+                                                                              Error:&error];
+        
+        NSLog(@"BLRiotStatsAPI");
+        NSLog(@"=================");
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else {
+            NSLog(@"Object class: %@", [stats class]);
+            
+            NSArray *props = @[@"playerStatSummaryType", @"wins", @"losses", @"modifyDate", @"modifyDateStr"];
+            for (BLPlayerStatsSummaryDto *stat in stats.playerStatSummaries) {
+                NSLog(@"Player Stat Summary w/ Class: %@", [stat class]);
+                NSLog(@"================================");
+                for (NSString *p in props) {
+                    NSLog(@"\t%@: %@", p, [stat valueForKey:p]);
+                }
+            }
+        }
+    }
+
+#pragma mark - BLRiotChampionAPI
     {
         NSError *error = nil;
         BLRiotChampionAPI *api = [[BLRiotChampionAPI alloc] initWithRegion:@"na"];
         BLChampionListDto *championList = [api requestChampionsFreeToPlay:false Error:&error];
         
+        NSLog(@"BLRiotChampionAPI");
+        NSLog(@"=================");
         if (error) {
             NSLog(@"Error: %@", error);
         } else {
@@ -51,12 +111,15 @@
         }
     }
     
+#pragma mark - BLRiotGameAPI
     {
         NSError *error = nil;
         BLRiotGameAPI *api = [[BLRiotGameAPI alloc] initWithRegion:@"na"];
         BLRecentGamesDto *recentGames = [api requestGamesWithSummonerId:@42715129
                                                                   Error:&error];
         
+        NSLog(@"BLRiotGamesAPI");
+        NSLog(@"==============");
         if (error) {
             NSLog(@"Error: %@", error);
         } else {
@@ -80,6 +143,115 @@
                 NSLog(@"\t#### Statistics");
                 for (BLRawStatDto *s in game.statistics) {
                     NSLog(@"\t%@: %@", s.name, s.value);
+                }
+            }
+        }
+    }
+    
+#pragma mark - BLRiotLeagueAPI
+    {
+        NSError *error = nil;
+        BLRiotLeagueAPI *api = [[BLRiotLeagueAPI alloc] initWithRegion:@"na"];
+        NSDictionary *leagues = [api requestLeaguesWithSummonerId:@28540955
+                                                            Error:&error];
+
+        NSLog(@"BLRiotLeagueAPI");
+        NSLog(@"===============");
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else {
+            [leagues enumerateKeysAndObjectsUsingBlock:^(NSString *key, BLLeagueDto *league, BOOL *stop) {
+                NSLog(@"#### %@", key);
+                
+                NSArray *props = @[@"name", @"queue", @"tier", @"timestamp"];
+                for (NSString *p in props) {
+                    NSLog(@"%@: %@", p, [league valueForKey:p]);
+                }
+                
+                NSLog(@"%d Players in %@", league.entries.count, league.name);
+                
+                for (BLLeagueItemDto *item in league.entries) {
+                    NSLog(@"\t'%@' [%d LP] %d Wins", item.playerOrTeamName, item.leaguePoints.integerValue, item.wins.integerValue);
+                    
+                    if (item.miniSeries != nil) {
+                        NSLog(@"\t\t##### MiniSeriesDto");
+                        NSArray *props = @[@"progress", @"target", @"wins", @"losses", @"timeLeftToPlayMillis"];
+                        for (NSString *p in props) {
+                            NSLog(@"\t\t%@: %@", p, [item.miniSeries valueForKey:p]);
+                        }
+                    }
+                }
+            }];
+        }
+    }
+    
+#pragma mark - BLRiotTeamAPI
+    {
+        NSError *error = nil;
+        BLRiotTeamAPI *api = [[BLRiotTeamAPI alloc] initWithRegion:@"na"];
+        NSArray *teams = [api requestTeamsWithSummonerId:@28540955 Error:&error];
+        
+        NSLog(@"BLRiotTeamAPI");
+        NSLog(@"=============");
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else {
+            for (BLTeamDto *team in teams) {
+                NSLog(@"## %@", team.name);
+                
+                NSArray *props = @[@"createDate", @"lastGameDate", @"lastJoinDate", @"lastJoinedRankedTeamQueueDate", @"modifyDate", @"secondLastJoinDate", @"status", @"tag", @"thirdLastJoinDate", @"timestamp"];
+                
+                for (NSString *p in props) {
+                    NSLog(@"%@: %@  ", p, [team valueForKey:p]);
+                }
+                
+                // matchHistory
+                NSUInteger count = 0;
+                for (BLMatchHistorySummaryDto *match in team.matchHistory) {
+                    count++;
+                    NSLog(@"### Match %d vs. %@ (%@)\n \
+%d **Kills**, %d **Deaths**, %d **Assists**  \n \
+**Game ID**: %ld  \n \
+**Game Mode**: %@  \n \
+**Map ID**: %d  \n \
+**Invalid?**: %@  \n \
+**Opposing Team Kills**: %d  ",
+                          count, match.opposingTeamName, (match.win.boolValue) ? @"WIN" : @"LOSS",
+                          match.kills.integerValue, match.deaths.integerValue, match.assists.integerValue,
+                          match.gameId.longValue, match.gameMode, match.mapId.integerValue, match.invalid.boolString,
+                          match.opposingTeamKills.integerValue
+                          );
+                }
+                
+                // messageOfDay
+                NSLog(@"### Message of Day (%d: %ld)\n%@  ", team.messageOfDay.version.integerValue, team.messageOfDay.createDate.longValue, team.messageOfDay.message);
+                
+                // roster
+                NSString *memberString;
+                
+                NSMutableArray *members = [NSMutableArray array];
+                
+                [team.roster.memberList enumerateObjectsUsingBlock:^(BLTeamMemberInfoDto *obj, NSUInteger idx, BOOL *stop) {
+                    [members addObject:[NSString stringWithFormat:@"#### Player %d\n**Invite Date:** %ld  \n**Join Date:** %ld  \n**Status:** %@  ", idx, obj.inviteDate.longValue, obj.joinDate.longValue, obj.status]];
+                }];
+                memberString = [members componentsJoinedByString:@"\n"];
+                
+                NSLog(@"### Roster:\n**Owner**: %ld  \n**Players:**  \n%@", team.roster.ownerId.longValue, memberString);
+                
+                // teamId
+                NSLog(@"### Team ID: %@", team.teamId.fullId);
+                
+                // teamStatSummary
+                NSLog(@"### Team Stat Summary:");
+                for (BLTeamStatDetailDto *detail in team.teamStatSummary.teamStatDetails) {
+                    NSLog(@"#### Team Stat Detail\n \
+**Average Games Played:** %d  \n \
+**Wins:** %d  \n \
+**Losses:** %d  \n \
+**Rating:** %d  \n \
+**Max Rating:** %d  \n \
+**Seed Rating:** %d  \n \
+**Team Stat Type:** %@  \n", detail.averageGamesPlayed.integerValue, detail.wins.integerValue, detail.losses.integerValue, detail.rating.integerValue, detail.maxRating.integerValue, detail.seedRating.integerValue, detail.teamStatType);
                 }
             }
         }

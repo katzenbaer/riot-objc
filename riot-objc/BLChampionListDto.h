@@ -15,6 +15,4 @@
 
 @property (nonatomic, strong) NSArray *champions; // The list of champion information.
 
-- (id)initWithChampions:(NSArray *)champions;
-
 @end

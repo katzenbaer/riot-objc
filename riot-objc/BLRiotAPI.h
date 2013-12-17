@@ -24,7 +24,7 @@
 // summoner-v1.1 [EUNE, NA, EUW]
 #define API_SUMMONER            API_ENDPOINT @"/api/lol/%@/v1.1/summoner/%ld"
 #define API_SUMMONER_BYNAME     API_ENDPOINT @"/api/lol/%@/v1.1/summoner/by-name/%@"
-#define API_SUMMONERS           API_ENDPOINT @"/api/lol/%@/v1.1/summoner/%s/name"
+#define API_SUMMONERS           API_ENDPOINT @"/api/lol/%@/v1.1/summoner/%@/name"
 #define API_SUMMONER_MASTERY    API_SUMMONER @"/mastery"
 #define API_SUMMONER_RUNES      API_SUMMONER @"/runes"
 // team-v2.1 [EUNE, EUW, BR, TR, NA]
@@ -43,7 +43,10 @@
 
 - (NSURL *)endpointUrl;
 
-- (NSData *)requestWithUrl:(NSURL *)url error:(NSError **)error;
-- (NSData *)requestWithUrl:(NSURL *)url Params:(id)params error:(NSError **)error;
+- (NSData *)requestWithUrl:(NSURL *)url Error:(NSError **)error;
+- (NSData *)requestWithUrl:(NSURL *)url Params:(id)params Error:(NSError **)error;
+
+- (NSObject *)requestJsonWithUrl:(NSURL *)url Error:(NSError **)error;
+- (NSObject *)requestJsonWithUrl:(NSURL *)url Params:(id)params Error:(NSError **)error;
 
 @end

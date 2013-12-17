@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "BLKeyValueObject.h"
 
+#import "BLPlayerDto.h"
+#import "BLRawStatDto.h"
+
 @interface BLGameDto : BLKeyValueObject
 
 @property (nonatomic, strong) NSNumber *championId; // Champion ID assocaited with game.
