@@ -20,16 +20,13 @@
     NSString *param = [@"freeToPlay=" stringByAppendingString:(freeToPlay) ? @"true" : @"false"];
     
     NSObject *obj = [self requestJsonWithUrl:url Params:param Error:error];
+    
     if (*error) return nil;
     
-    NSMutableArray *result = [NSMutableArray array];
-    if ([obj isKindOfClass:[NSDictionary class]]) {
-        NSArray *champions = [(NSDictionary *)obj valueForKey:@"champions"];
-        for (NSDictionary *champion in champions) {
-            [result addObject:[BLChampionDto newWithKVDictionary:champion]];
-        }
-    }
-    return [[BLChampionListDto alloc] initWithChampions:result];
+    if ([obj isKindOfClass:[NSDictionary class]])
+        return [[BLChampionListDto alloc] initWithKVDictionary:(NSDictionary *)obj];
+    else
+        return nil;
 }
 
 @end

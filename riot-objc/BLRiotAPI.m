@@ -84,6 +84,9 @@
                     case 400:
                         reasonString = @"Bad request";
                         break;
+                    case 404:
+                        reasonString = @"Summoner not found";
+                        break;
                     case 500:
                         reasonString = @"Internal server error";
                         break;

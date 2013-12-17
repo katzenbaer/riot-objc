@@ -17,6 +17,7 @@
                                        self.region, summonerId.longValue]];
     
     NSObject *obj = [self requestJsonWithUrl:url Error:error];
+    
     if (*error) return nil;
     
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
