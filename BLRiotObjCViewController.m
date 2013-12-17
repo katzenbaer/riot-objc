@@ -12,6 +12,8 @@
 #import "BLRiotGameAPI.h"
 #import "BLRiotLeagueAPI.h"
 #import "BLRiotTeamAPI.h"
+#import "BLRiotStatsAPI.h"
+#import "BLRiotSummonerAPI.h"
 
 #import "NSNumber+BoolString.h"
 
@@ -39,7 +41,58 @@
     [myLabel setText:@"Hello, there."];
     [myLabel sizeToFit];
     [self.view addSubview:myLabel];
+
+    NSNumber *summonerId;
+#pragma mark - BLRiotSummonerAPI
+    {
+        NSError *error = nil;
+        BLRiotSummonerAPI *api = [[BLRiotSummonerAPI alloc] initWithRegion:@"na"];
+        BLSummonerDto *summoner = [api requestSummonerWithSummonerName:@"im420blaziken"
+                                                                 Error:&error];
+        
+        NSLog(@"BLRiotSummonerAPI");
+        NSLog(@"=================");
+        if (error) {
+            NSLog(@"Error: %@", error);
+            return;
+        } else {
+            NSLog(@"Object class: %@", [summoner class]);
+            
+            NSArray *props = @[@"_id", @"name", @"profileIconId", @"revisionDate",
+                               @"revisionDateStr", @"summonerLevel"];
+            for (NSString *p in props) {
+                NSLog(@"\t%@: %@", p, [summoner valueForKey:p]);
+            }
+            
+            summonerId = summoner._id;
+        }
+    }
     
+#pragma mark - BLRiotStatsAPI
+    {
+        NSError *error = nil;
+        BLRiotStatsAPI *api = [[BLRiotStatsAPI alloc] initWithRegion:@"na"];
+        BLPlayerStatsSummaryListDto *stats = [api requestStatsSummaryWithSummonerId:summonerId
+                                                                              Error:&error];
+        
+        NSLog(@"BLRiotStatsAPI");
+        NSLog(@"=================");
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else {
+            NSLog(@"Object class: %@", [stats class]);
+            
+            NSArray *props = @[@"playerStatSummaryType", @"wins", @"losses", @"modifyDate", @"modifyDateStr"];
+            for (BLPlayerStatsSummaryDto *stat in stats.playerStatSummaries) {
+                NSLog(@"Player Stat Summary w/ Class: %@", [stat class]);
+                NSLog(@"================================");
+                for (NSString *p in props) {
+                    NSLog(@"\t%@: %@", p, [stat valueForKey:p]);
+                }
+            }
+        }
+    }
+
 #pragma mark - BLRiotChampionAPI
     {
         NSError *error = nil;
