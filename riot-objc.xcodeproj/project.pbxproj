@@ -39,6 +39,24 @@
 		CD862EE31860C91A003AEFD8 /* BLMiniSeriesDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EE11860C91A003AEFD8 /* BLMiniSeriesDto.m */; };
 		CD862EE61860C928003AEFD8 /* BLRiotLeagueAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EE51860C928003AEFD8 /* BLRiotLeagueAPI.m */; };
 		CD862EE71860C928003AEFD8 /* BLRiotLeagueAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EE51860C928003AEFD8 /* BLRiotLeagueAPI.m */; };
+		CD862EEA1860D98D003AEFD8 /* BLTeamIdDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EE91860D98D003AEFD8 /* BLTeamIdDto.m */; };
+		CD862EEB1860D98D003AEFD8 /* BLTeamIdDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EE91860D98D003AEFD8 /* BLTeamIdDto.m */; };
+		CD862EEE1860D998003AEFD8 /* BLMessageOfDayDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EED1860D998003AEFD8 /* BLMessageOfDayDto.m */; };
+		CD862EEF1860D998003AEFD8 /* BLMessageOfDayDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EED1860D998003AEFD8 /* BLMessageOfDayDto.m */; };
+		CD862EF21860D9A7003AEFD8 /* BLMatchHistorySummaryDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EF11860D9A7003AEFD8 /* BLMatchHistorySummaryDto.m */; };
+		CD862EF31860D9A7003AEFD8 /* BLMatchHistorySummaryDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EF11860D9A7003AEFD8 /* BLMatchHistorySummaryDto.m */; };
+		CD862EF61860D9B2003AEFD8 /* BLTeamMemberInfoDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EF51860D9B2003AEFD8 /* BLTeamMemberInfoDto.m */; };
+		CD862EF71860D9B2003AEFD8 /* BLTeamMemberInfoDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EF51860D9B2003AEFD8 /* BLTeamMemberInfoDto.m */; };
+		CD862EFA1860D9BB003AEFD8 /* BLTeamStatDetailDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EF91860D9BB003AEFD8 /* BLTeamStatDetailDto.m */; };
+		CD862EFB1860D9BB003AEFD8 /* BLTeamStatDetailDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EF91860D9BB003AEFD8 /* BLTeamStatDetailDto.m */; };
+		CD862EFE1860D9C4003AEFD8 /* BLTeamStatSummaryDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EFD1860D9C4003AEFD8 /* BLTeamStatSummaryDto.m */; };
+		CD862EFF1860D9C4003AEFD8 /* BLTeamStatSummaryDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862EFD1860D9C4003AEFD8 /* BLTeamStatSummaryDto.m */; };
+		CD862F021860D9CB003AEFD8 /* BLRosterDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862F011860D9CB003AEFD8 /* BLRosterDto.m */; };
+		CD862F031860D9CB003AEFD8 /* BLRosterDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862F011860D9CB003AEFD8 /* BLRosterDto.m */; };
+		CD862F061860D9D1003AEFD8 /* BLTeamDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862F051860D9D1003AEFD8 /* BLTeamDto.m */; };
+		CD862F071860D9D1003AEFD8 /* BLTeamDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862F051860D9D1003AEFD8 /* BLTeamDto.m */; };
+		CD862F0A1860D9E7003AEFD8 /* BLRiotTeamAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862F091860D9E7003AEFD8 /* BLRiotTeamAPI.m */; };
+		CD862F0B1860D9E7003AEFD8 /* BLRiotTeamAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = CD862F091860D9E7003AEFD8 /* BLRiotTeamAPI.m */; };
 		CD9317CA185E6E8100FA4864 /* BLChampionListDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9317C9185E6E8100FA4864 /* BLChampionListDto.m */; };
 		CD958257185F67C500F62A76 /* BLPlayerDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD958256185F67C500F62A76 /* BLPlayerDto.m */; };
 		CD95825A185F68CA00F62A76 /* BLRawStatDto.m in Sources */ = {isa = PBXBuildFile; fileRef = CD958259185F68CA00F62A76 /* BLRawStatDto.m */; };
@@ -93,6 +111,24 @@
 		CD862EE11860C91A003AEFD8 /* BLMiniSeriesDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLMiniSeriesDto.m; sourceTree = "<group>"; };
 		CD862EE41860C928003AEFD8 /* BLRiotLeagueAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLRiotLeagueAPI.h; sourceTree = "<group>"; };
 		CD862EE51860C928003AEFD8 /* BLRiotLeagueAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLRiotLeagueAPI.m; sourceTree = "<group>"; };
+		CD862EE81860D98D003AEFD8 /* BLTeamIdDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLTeamIdDto.h; sourceTree = "<group>"; };
+		CD862EE91860D98D003AEFD8 /* BLTeamIdDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLTeamIdDto.m; sourceTree = "<group>"; };
+		CD862EEC1860D998003AEFD8 /* BLMessageOfDayDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLMessageOfDayDto.h; sourceTree = "<group>"; };
+		CD862EED1860D998003AEFD8 /* BLMessageOfDayDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLMessageOfDayDto.m; sourceTree = "<group>"; };
+		CD862EF01860D9A7003AEFD8 /* BLMatchHistorySummaryDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLMatchHistorySummaryDto.h; sourceTree = "<group>"; };
+		CD862EF11860D9A7003AEFD8 /* BLMatchHistorySummaryDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLMatchHistorySummaryDto.m; sourceTree = "<group>"; };
+		CD862EF41860D9B2003AEFD8 /* BLTeamMemberInfoDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLTeamMemberInfoDto.h; sourceTree = "<group>"; };
+		CD862EF51860D9B2003AEFD8 /* BLTeamMemberInfoDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLTeamMemberInfoDto.m; sourceTree = "<group>"; };
+		CD862EF81860D9BB003AEFD8 /* BLTeamStatDetailDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLTeamStatDetailDto.h; sourceTree = "<group>"; };
+		CD862EF91860D9BB003AEFD8 /* BLTeamStatDetailDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLTeamStatDetailDto.m; sourceTree = "<group>"; };
+		CD862EFC1860D9C4003AEFD8 /* BLTeamStatSummaryDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLTeamStatSummaryDto.h; sourceTree = "<group>"; };
+		CD862EFD1860D9C4003AEFD8 /* BLTeamStatSummaryDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLTeamStatSummaryDto.m; sourceTree = "<group>"; };
+		CD862F001860D9CB003AEFD8 /* BLRosterDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLRosterDto.h; sourceTree = "<group>"; };
+		CD862F011860D9CB003AEFD8 /* BLRosterDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLRosterDto.m; sourceTree = "<group>"; };
+		CD862F041860D9D1003AEFD8 /* BLTeamDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLTeamDto.h; sourceTree = "<group>"; };
+		CD862F051860D9D1003AEFD8 /* BLTeamDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLTeamDto.m; sourceTree = "<group>"; };
+		CD862F081860D9E7003AEFD8 /* BLRiotTeamAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLRiotTeamAPI.h; sourceTree = "<group>"; };
+		CD862F091860D9E7003AEFD8 /* BLRiotTeamAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLRiotTeamAPI.m; sourceTree = "<group>"; };
 		CD9317C8185E6E8100FA4864 /* BLChampionListDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLChampionListDto.h; sourceTree = "<group>"; };
 		CD9317C9185E6E8100FA4864 /* BLChampionListDto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLChampionListDto.m; sourceTree = "<group>"; };
 		CD958255185F67C500F62A76 /* BLPlayerDto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLPlayerDto.h; sourceTree = "<group>"; };
@@ -218,6 +254,8 @@
 				CD958265185F6A7200F62A76 /* BLRiotGameAPI.m */,
 				CD862EE41860C928003AEFD8 /* BLRiotLeagueAPI.h */,
 				CD862EE51860C928003AEFD8 /* BLRiotLeagueAPI.m */,
+				CD862F081860D9E7003AEFD8 /* BLRiotTeamAPI.h */,
+				CD862F091860D9E7003AEFD8 /* BLRiotTeamAPI.m */,
 			);
 			name = BLRiotAPI;
 			sourceTree = "<group>";
@@ -245,6 +283,22 @@
 				CD862EDD1860C910003AEFD8 /* BLLeagueItemDto.m */,
 				CD862EE01860C91A003AEFD8 /* BLMiniSeriesDto.h */,
 				CD862EE11860C91A003AEFD8 /* BLMiniSeriesDto.m */,
+				CD862EE81860D98D003AEFD8 /* BLTeamIdDto.h */,
+				CD862EE91860D98D003AEFD8 /* BLTeamIdDto.m */,
+				CD862EEC1860D998003AEFD8 /* BLMessageOfDayDto.h */,
+				CD862EED1860D998003AEFD8 /* BLMessageOfDayDto.m */,
+				CD862EF01860D9A7003AEFD8 /* BLMatchHistorySummaryDto.h */,
+				CD862EF11860D9A7003AEFD8 /* BLMatchHistorySummaryDto.m */,
+				CD862EF41860D9B2003AEFD8 /* BLTeamMemberInfoDto.h */,
+				CD862EF51860D9B2003AEFD8 /* BLTeamMemberInfoDto.m */,
+				CD862EF81860D9BB003AEFD8 /* BLTeamStatDetailDto.h */,
+				CD862EF91860D9BB003AEFD8 /* BLTeamStatDetailDto.m */,
+				CD862EFC1860D9C4003AEFD8 /* BLTeamStatSummaryDto.h */,
+				CD862EFD1860D9C4003AEFD8 /* BLTeamStatSummaryDto.m */,
+				CD862F001860D9CB003AEFD8 /* BLRosterDto.h */,
+				CD862F011860D9CB003AEFD8 /* BLRosterDto.m */,
+				CD862F041860D9D1003AEFD8 /* BLTeamDto.h */,
+				CD862F051860D9D1003AEFD8 /* BLTeamDto.m */,
 			);
 			name = BLBusinessLogic;
 			sourceTree = "<group>";
@@ -352,14 +406,23 @@
 				CD95826A185F6BB100F62A76 /* BLKeyValueObject.m in Sources */,
 				CD374FA9185D76A0003B2638 /* BLChampionDto.m in Sources */,
 				CD374FAC185D7A67003B2638 /* BLRiotChampionAPI.m in Sources */,
+				CD862EEA1860D98D003AEFD8 /* BLTeamIdDto.m in Sources */,
 				CD958266185F6A7200F62A76 /* BLRiotGameAPI.m in Sources */,
 				CD374FA6185D761C003B2638 /* BLRiotObjCViewController.m in Sources */,
+				CD862EF61860D9B2003AEFD8 /* BLTeamMemberInfoDto.m in Sources */,
+				CD862EEE1860D998003AEFD8 /* BLMessageOfDayDto.m in Sources */,
 				CD862EE21860C91A003AEFD8 /* BLMiniSeriesDto.m in Sources */,
+				CD862EFA1860D9BB003AEFD8 /* BLTeamStatDetailDto.m in Sources */,
 				CD862EDE1860C910003AEFD8 /* BLLeagueItemDto.m in Sources */,
 				CD95825A185F68CA00F62A76 /* BLRawStatDto.m in Sources */,
+				CD862EFE1860D9C4003AEFD8 /* BLTeamStatSummaryDto.m in Sources */,
 				CD862ED01860C8CB003AEFD8 /* BLLeagueDto.m in Sources */,
+				CD862EF21860D9A7003AEFD8 /* BLMatchHistorySummaryDto.m in Sources */,
 				CD9317CA185E6E8100FA4864 /* BLChampionListDto.m in Sources */,
+				CD862F021860D9CB003AEFD8 /* BLRosterDto.m in Sources */,
+				CD862F061860D9D1003AEFD8 /* BLTeamDto.m in Sources */,
 				CD374F7E185D7053003B2638 /* main.m in Sources */,
+				CD862F0A1860D9E7003AEFD8 /* BLRiotTeamAPI.m in Sources */,
 				CD862EE61860C928003AEFD8 /* BLRiotLeagueAPI.m in Sources */,
 				CD95825E185F694000F62A76 /* BLGameDto.m in Sources */,
 			);
@@ -369,21 +432,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD862EF71860D9B2003AEFD8 /* BLTeamMemberInfoDto.m in Sources */,
 				CD862EE71860C928003AEFD8 /* BLRiotLeagueAPI.m in Sources */,
+				CD862EEB1860D98D003AEFD8 /* BLTeamIdDto.m in Sources */,
 				CD95826B185F6BB100F62A76 /* BLKeyValueObject.m in Sources */,
 				CD862ED11860C8D3003AEFD8 /* BLLeagueDto.m in Sources */,
 				CD374F97185D7053003B2638 /* riot_objcTests.m in Sources */,
 				CD862EDB1860C8FB003AEFD8 /* BLRiotChampionAPI.m in Sources */,
 				CD958267185F6A7200F62A76 /* BLRiotGameAPI.m in Sources */,
+				CD862F031860D9CB003AEFD8 /* BLRosterDto.m in Sources */,
+				CD862EF31860D9A7003AEFD8 /* BLMatchHistorySummaryDto.m in Sources */,
+				CD862EFF1860D9C4003AEFD8 /* BLTeamStatSummaryDto.m in Sources */,
 				CD862ED91860C8F7003AEFD8 /* BLRecentGamesDto.m in Sources */,
 				CD862ED71860C8F7003AEFD8 /* BLRawStatDto.m in Sources */,
+				CD862EFB1860D9BB003AEFD8 /* BLTeamStatDetailDto.m in Sources */,
 				CD862ED51860C8F7003AEFD8 /* BLChampionListDto.m in Sources */,
 				CD862ED61860C8F7003AEFD8 /* BLPlayerDto.m in Sources */,
 				CD862EDF1860C910003AEFD8 /* BLLeagueItemDto.m in Sources */,
+				CD862F071860D9D1003AEFD8 /* BLTeamDto.m in Sources */,
 				CD862ED21860C8EF003AEFD8 /* BLChampionDto.m in Sources */,
+				CD862EEF1860D998003AEFD8 /* BLMessageOfDayDto.m in Sources */,
 				CD862EE31860C91A003AEFD8 /* BLMiniSeriesDto.m in Sources */,
 				CD862ED81860C8F7003AEFD8 /* BLGameDto.m in Sources */,
 				CD862EDA1860C8FB003AEFD8 /* BLRiotAPI.m in Sources */,
+				CD862F0B1860D9E7003AEFD8 /* BLRiotTeamAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
