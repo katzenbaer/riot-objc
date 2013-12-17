@@ -10,6 +10,7 @@
 
 #import "BLRiotChampionAPI.h"
 #import "BLRiotGameAPI.h"
+#import "BLRiotLeagueAPI.h"
 
 @interface BLRiotObjCViewController ()
 
@@ -36,11 +37,14 @@
     [myLabel sizeToFit];
     [self.view addSubview:myLabel];
     
+#pragma mark - BLRiotChampionAPI
     {
         NSError *error = nil;
         BLRiotChampionAPI *api = [[BLRiotChampionAPI alloc] initWithRegion:@"na"];
         BLChampionListDto *championList = [api requestChampionsFreeToPlay:false Error:&error];
         
+        NSLog(@"BLRiotChampionAPI");
+        NSLog(@"=======");
         if (error) {
             NSLog(@"Error: %@", error);
         } else {
@@ -51,12 +55,15 @@
         }
     }
     
+#pragma mark - BLRiotGameAPI
     {
         NSError *error = nil;
         BLRiotGameAPI *api = [[BLRiotGameAPI alloc] initWithRegion:@"na"];
         BLRecentGamesDto *recentGames = [api requestGamesWithSummonerId:@42715129
                                                                   Error:&error];
         
+        NSLog(@"BLRiotGamesAPI");
+        NSLog(@"=======");
         if (error) {
             NSLog(@"Error: %@", error);
         } else {
@@ -82,6 +89,43 @@
                     NSLog(@"\t%@: %@", s.name, s.value);
                 }
             }
+        }
+    }
+    
+#pragma mark - BLRiotLeagueAPI
+    {
+        NSError *error = nil;
+        BLRiotLeagueAPI *api = [[BLRiotLeagueAPI alloc] initWithRegion:@"na"];
+        NSDictionary *leagues = [api requestLeaguesWithSummonerId:@28540955
+                                                            Error:&error];
+
+        NSLog(@"BLRiotLeagueAPI");
+        NSLog(@"=======");
+        if (error) {
+            NSLog(@"Error: %@", error);
+        } else {
+            [leagues enumerateKeysAndObjectsUsingBlock:^(NSString *key, BLLeagueDto *league, BOOL *stop) {
+                NSLog(@"#### %@", key);
+                
+                NSArray *props = @[@"name", @"queue", @"tier", @"timestamp"];
+                for (NSString *p in props) {
+                    NSLog(@"%@: %@", p, [league valueForKey:p]);
+                }
+                
+                NSLog(@"%d Players in %@", league.entries.count, league.name);
+                
+                for (BLLeagueItemDto *item in league.entries) {
+                    NSLog(@"\t'%@' [%d LP] %d Wins", item.playerOrTeamName, item.leaguePoints.integerValue, item.wins.integerValue);
+                    
+                    if (item.miniSeries != nil) {
+                        NSLog(@"\t\t##### MiniSeriesDto");
+                        NSArray *props = @[@"progress", @"target", @"wins", @"losses", @"timeLeftToPlayMillis"];
+                        for (NSString *p in props) {
+                            NSLog(@"\t\t%@: %@", p, [item.miniSeries valueForKey:p]);
+                        }
+                    }
+                }
+            }];
         }
     }
 }
