@@ -10,4 +10,14 @@
 
 @implementation BLLeagueItemDto
 
+- (id)initWithKVDictionary:(NSDictionary *)dict {
+    if (self = [super init]) {
+        if (dict[@"miniSeries"] != nil)
+            self.miniSeries = [BLMiniSeriesDto newWithKVDictionary:dict[@"miniSeries"]];
+        else
+            self.miniSeries = nil;
+    }
+    return self;
+}
+
 @end

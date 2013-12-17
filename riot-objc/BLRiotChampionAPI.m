@@ -26,9 +26,7 @@
     if ([obj isKindOfClass:[NSDictionary class]]) {
         NSArray *champions = [(NSDictionary *)obj valueForKey:@"champions"];
         for (NSDictionary *champion in champions) {
-            BLChampionDto *c = [BLChampionDto newWithKVDictionary:champion];
-            
-            [result addObject:c];
+            [result addObject:[BLChampionDto newWithKVDictionary:champion]];
         }
     }
     return [[BLChampionListDto alloc] initWithChampions:result];

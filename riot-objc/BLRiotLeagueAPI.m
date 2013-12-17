@@ -23,22 +23,7 @@
     if ([obj isKindOfClass:[NSDictionary class]]) {
         [(NSDictionary *)obj enumerateKeysAndObjectsUsingBlock:^(NSString *key,
                                                                  NSDictionary *val, BOOL *stop) {
-        
-            BLLeagueDto *league = [BLLeagueDto newWithKVDictionary:val];
-            result[key] = league;
-            
-            NSMutableArray *entries = [NSMutableArray array];
-            
-            for (NSDictionary *item in league.entries) {
-                BLLeagueItemDto *_item = [BLLeagueItemDto newWithKVDictionary:item];
-                
-                if (item[@"miniSeries"] != nil) _item.miniSeries = [BLMiniSeriesDto newWithKVDictionary:item[@"miniSeries"]];
-                else _item.miniSeries = nil;
-                
-                [entries addObject:_item];
-            }
-            
-            league.entries = [NSArray arrayWithArray:entries];
+            result[key] = [BLLeagueDto newWithKVDictionary:val];
         }];
     }
     return [NSDictionary dictionaryWithDictionary:result];

@@ -10,6 +10,19 @@
 
 @implementation BLLeagueDto
 
+- (id)initWithKVDictionary:(NSDictionary *)dict {
+    if (self = [super initWithKVDictionary:dict]) {
+        NSMutableArray *entries = [NSMutableArray array];
+        
+        for (NSDictionary *entry in dict[@"entries"]) {
+            [entries addObject:[BLLeagueItemDto newWithKVDictionary:entry]];
+        }
+        
+        self.entries = [NSArray arrayWithArray:entries];
+    }
+    return self;
+}
+
 + (NSArray *)queues {
     static NSArray *_queues;
     static dispatch_once_t onceToken;

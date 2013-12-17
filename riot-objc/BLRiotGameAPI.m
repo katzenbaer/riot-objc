@@ -23,31 +23,7 @@
     if ([obj isKindOfClass:[NSDictionary class]]) {
         NSArray *games = [(NSDictionary *)obj valueForKey:@"games"];
         for (NSDictionary *game in games) {
-            BLGameDto *g = [BLGameDto newWithKVDictionary:game];
-            
-            {
-                NSMutableArray *result = [NSMutableArray array];
-                NSArray *fellowPlayers = [g fellowPlayers];
-                
-                for (NSDictionary *player in fellowPlayers) {
-                    [result addObject:[BLPlayerDto newWithKVDictionary:player]];
-                }
-                
-                g.fellowPlayers = [NSArray arrayWithArray:result];
-            }
-            
-            {
-                NSMutableArray *result = [NSMutableArray array];
-                NSArray *statistics = [g statistics];
-                
-                for (NSDictionary *stat in statistics) {
-                    [result addObject:[BLRawStatDto newWithKVDictionary:stat]];
-                }
-                
-                g.statistics = [NSArray arrayWithArray:result];
-            }
-            
-            [result addObject:g];
+            [result addObject:[BLGameDto newWithKVDictionary:game]];
         }
     }
     return [BLRecentGamesDto newWithKVDictionary:@{@"games" : [NSArray arrayWithArray:result]}];
