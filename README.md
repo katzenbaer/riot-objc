@@ -32,19 +32,28 @@ All requests in riot-objc are made through `BLRiot[Endpoint]API` classes. Possib
 #### Instantiating
 It's easy to create a new instance of the Endpoint Classes. Just make calls of the form,
 ```objc
+#import "BLRiotChampionAPI.h"
+...
+
 BLRiotChampionAPI *api = [[BLRiotChampionAPI alloc] initWithRegion:@"na"];
 ```
 
 #### Requests
 Once you have an instance of the endpoint class, simply call the method on the instance,
 ```objc
+#import "BLRiotChampionAPI.h"
+...
+
 NSError *error;
 BLChampionListDto *champions = [api requestChampionsFreeToPlay:true Error:&error];
 ```
 
 #### Error Handling
-Make sure to check for errors, which can be of the codes: `AUTHENTICATION_ERROR`, `RESPONSE_ERROR`, or `PARSE_ERROR` (these are predefined constants you can use if you `#import "BLRiotAPI.h"`), and handle them gracefully,
+Make sure to check for errors, which can be of the codes: `AUTHENTICATION_ERROR`, `RESPONSE_ERROR`, or `PARSE_ERROR` (these are predefined constants inherited by every endpoint class from `BLRiotAPI.h`), and handle them gracefully,
 ```objc
+#import "BLRiotChampionAPI.h" // Inherited from BLRiotAPI
+...
+
 NSError *error;
 ...
 if (error) {
@@ -66,6 +75,9 @@ All responses from the endpoint are stored in Business Logic models or in contai
 You shouldn't need to ever explictly instantiate these classes by yourself. Rather, requesting using the endpoint class methods will `alloc`, `init`, and `return` instances of these classes or containers with these classes, such as `NSArray`.
 
 ```objc
+#import "BLRiotChampionAPI.h"
+...
+
 NSError *error;
 BLChampionListDto *champions = [api requestChampionsFreeToPlay:true Error:&error];
 ```
@@ -74,7 +86,9 @@ BLChampionListDto *champions = [api requestChampionsFreeToPlay:true Error:&error
 All properties of the models are defined as `nonatomic` and `strong`, so with Automatic Reference Counting, you don't have to worry about retaining, releasing, or the garbage collection of these model's properties. Like every Objective-C class, you can access the properties of these models through either dot-syntax or by explictly calling the getter method,
 
 ```objc
+#import "BLChampionDto.h"
 ...
+
 /**
  * Note: Since 'id' is a reserved keyword in Objective-C,
  * we prefix all properties with the name 'id' with an underscore.
@@ -87,6 +101,11 @@ All properties of the models are defined as `nonatomic` and `strong`, so with Au
 If the request to an endpoint through an endpoint class, like `BLRiotChampionAPI`, results in an error (see Error Handling above), then a `nil` object reference will be returned instead of the usual pointer. This is why it's important to gracefully handle errored requests through endpoint classes.
 
 ```objc
+#import "BLRiotChampionAPI.h"
+#import "BLChampionListDto.h" // not needed, implicitly imported by BLRiotChampionAPI
+#import "BLChampionDto.h" // not needed, implicitly imported by BLChampionListDto
+...
+
 NSError *error;
 BLChampionListDto *champions = [api requestChampionsFreeToPlay:true Error:&error]; // Scenario: Returns nil
 
@@ -99,6 +118,9 @@ for (BLChampionDto *champion in champions.champions) { // !! WRONG: champions is
 ```
 
 ```objc
+#import "BLRiotChampionAPI.h"
+...
+
 NSError *error;
 BLChampionListDto *champions = [api requestChampionsFreeToPlay:true Error:&error]; // Scenario: Returns nil
 
