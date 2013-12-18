@@ -30,4 +30,10 @@
 @property (nonatomic, strong) NSString *subType; // Game sub-type.
 @property (nonatomic, strong) NSNumber *teamId; // Team ID associated with game.
 
+- (NSString *)mapName;
++ (NSString *)mapNameFromId:(NSNumber *)mapId;
+
++ (NSArray *)gameModes;
++ (NSArray *)gameTypes;
+
 @end
