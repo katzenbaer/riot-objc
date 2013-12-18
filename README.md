@@ -64,12 +64,13 @@ if (error) {
 ```
 
 ### Business Logic/Data Models
-All responses from the endpoint are stored in Business Logic models or in containers (usually `NSArray`) of these models. The models are prefixed with `BL` and end with `Dto`. Here are some examples of these classes,
+All responses from the endpoint are stored in business logic models or in containers (usually `NSArray`) of these models. The models are prefixed with `BL` and end with `Dto`. Here are some examples of these classes,
 
  * BLChampionListDto
  * BLChampionDto
  * BLChampionStatsDto
  * BLChampionStatDto
+ * *and many more!*
 
 #### Instantiating
 You shouldn't need to ever explictly instantiate these classes by yourself. Rather, requesting using the endpoint class methods will `alloc`, `init`, and `return` instances of these classes or containers with these classes, such as `NSArray`.
@@ -94,7 +95,7 @@ All properties of the models are defined as `nonatomic` and `strong`, so with Au
  * we prefix all properties with the name 'id' with an underscore.
  */
 [idLabel setText:champion._id.stringValue];
-[nameLabel setText:champion.name];
+[nameLabel setText:[champion name]];
 ```
 
 #### Nil
@@ -137,18 +138,19 @@ if (error) {
 
 Credits and attributions
 ----------------------
-Riot Games for the API
+Riot Games for the API  
 im420blaziken : Original Creator (if you fork)  
-API wrappers in other languages: https://developer.riotgames.com/discussion/riot-games-api/show/iXR9Vl2A
+API wrappers in other languages: https://developer.riotgames.com/discussion/riot-games-api/show/iXR9Vl2A  
 
 ### Contributing
 If you want to help contribute, just open an Issue to let me know what you're working on. When you're done, simply submit a pull request.
 
 README Changelog
 ----------------
-12/17/2013 - Removed content regarding riot-objc being incomplete, since it's fully capable now.
-12/15/2013 - Added information re: how to add your developer key in the code.
-12/14/2013 - Initial README with basic information (need to expand) and a progress section.
+ * 12/17/2013 - Added a detailed API wrapper explanation in the **Usage** section.
+ * 12/17/2013 - Removed content regarding riot-objc being incomplete, since it's fully capable now.
+ * 12/15/2013 - Added information re: how to add your developer key in the code.
+ * 12/14/2013 - Initial README with basic information (need to expand) and a progress section.
 
 License
 -------
