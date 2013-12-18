@@ -30,7 +30,7 @@ All requests in riot-objc are made through `BLRiot[Endpoint]API` classes. Possib
  * BLRiotTeamAPI
 
 #### Instantiating
-It's easy to create a new instance of the Endpoint Classes. Just make calls of the form,
+It's easy to create a new instance of the endpoint classes. Just make calls of the form,
 ```objc
 #import "BLRiotChampionAPI.h"
 ...
