@@ -1,11 +1,14 @@
 riot-objc
 =========
-**Early stage** Objective-C wrapper for the Riot Games API beta  
+Objective-C wrapper for the Riot Games API beta that abstracts both endpoint requests and responses.  
 
-Currently, it only supports some of the endpoints, but is easily extensible to the others (I just need time to add them). See the Roadmap for what is currently supported.
-
-### Roadmap/Progress
-See https://github.com/im420blaziken/riot-objc/wiki/Roadmap-Progress
+**Compatability:**  
+ * champion-v1.1 [NA, EUW, EUNE]
+ * game-v1.1 [NA, EUNE, EUW]
+ * league-v2.1 [NA, EUNE, BR, TR, EUW]
+ * stats-v1.1 [EUW, NA, EUNE]
+ * summoner-v1.1 [EUNE, EUW, NA]
+ * team-v2.1 [TR, NA, EUNE, EUW, BR]
 
 Getting Started
 ---------------
@@ -15,6 +18,100 @@ Replace `YOUR-KEY-HERE` with your developer key, obtainable for free from Riot.
 Usage
 -----
 Live code examples can be seen in `BLRiotObjCViewController.m`.
+
+### Endpoint Classes
+All requests in riot-objc are made through `BLRiot[Endpoint]API` classes. Possible values for `[Endpoint]` permit the following classes:
+
+ * BLRiotChampionAPI
+ * BLRiotGameAPI
+ * BLRiotLeagueAPI
+ * BLRiotStatsAPI
+ * BLRiotSummonerAPI
+ * BLRiotTeamAPI
+
+#### Instantiating
+It's easy to create a new instance of the Endpoint Classes. Just make calls of the form,
+```objc
+BLRiotChampionAPI *api = [[BLRiotChampionAPI alloc] initWithRegion:@"na"];
+```
+
+#### Requests
+Once you have an instance of the endpoint class, simply call the method on the instance,
+```objc
+NSError *error;
+BLChampionListDto *champions = [api requestChampionsFreeToPlay:true Error:&error];
+```
+
+#### Error Handling)
+Make sure to check for errors, which can be of the codes: `AUTHENTICATION_ERROR`, `RESPONSE_ERROR`, or `PARSE_ERROR` (these are predefined constants you can use if you `#import "BLRiotAPI.h"`), and handle them gracefully,
+```objc
+NSError *error;
+...
+if (error) {
+  if (error.code == AUTHENTICATION_ERROR) {
+    NSLog(@"Oops! I forgot to add my API key into BLRiotAPI.h!");
+  }
+}
+```
+
+### Business Logic/Data Models
+All responses from the endpoint are stored in Business Logic models or in containers (usually `NSArray`) of these models. The models are prefixed with `BL` and end with `Dto`. Here are some examples of these classes,
+
+ * BLChampionListDto
+ * BLChampionDto
+ * BLChampionStatsDto
+ * BLChampionStatDto
+
+#### Instantiating
+You shouldn't need to ever explictly instantiate these classes by yourself. Rather, requesting using the endpoint class methods will `alloc`, `init`, and `return` instances of these classes or containers with these classes, such as `NSArray`.
+
+```objc
+NSError *error;
+BLChampionListDto *champions = [api requestChampionsFreeToPlay:true Error:&error];
+```
+
+#### Properties
+All properties of the models are defined as `nonatomic` and `strong`, so with Automatic Reference Counting, you don't have to worry about retaining, releasing, or the garbage collection of these model's properties. Like every Objective-C class, you can access the properties of these models through either dot-syntax or by explictly calling the getter method,
+
+```objc
+...
+/**
+ * Note: Since 'id' is a reserved keyword in Objective-C,
+ * we prefix all properties with the name 'id' with an underscore.
+ */
+[idLabel setText:champion._id.stringValue];
+[nameLabel setText:champion.name];
+```
+
+#### Nil
+If the request to an endpoint through an endpoint class, like `BLRiotChampionAPI`, results in an error (see Error Handling above), then a `nil` object reference will be returned instead of the usual pointer. This is why it's important to gracefully handle errored requests through endpoint classes.
+
+```objc
+NSError *error;
+BLChampionListDto *champions = [api requestChampionsFreeToPlay:true Error:&error]; // Scenario: Returns nil
+
+// !! WRONG: Uh oh, we don't check for an error....
+
+NSLog(@"Champions:");
+for (BLChampionDto *champion in champions.champions) { // !! WRONG: champions is nil, so champions.champions is nil!
+  NSLog(@"\t%@", champion.name);
+}
+```
+
+```objc
+NSError *error;
+BLChampionListDto *champions = [api requestChampionsFreeToPlay:true Error:&error]; // Scenario: Returns nil
+
+if (error) {
+  NSLog(@"Error: %@", error);
+  // Maybe subtly alert the user too?
+} else {
+  NSLog(@"Champions:");
+  for (BLChampionDto *champion in champions.champions) { // RIGHT: Since error is nil, we know this will be OK.
+    NSLog(@"\t%@", champion.name);
+  }
+}
+```
 
 Credits and attributions
 ----------------------
@@ -27,6 +124,7 @@ If you want to help contribute, just open an Issue to let me know what you're wo
 
 README Changelog
 ----------------
+12/17/2013 - Removed content regarding riot-objc being incomplete, since it's fully capable now.
 12/15/2013 - Added information re: how to add your developer key in the code.
 12/14/2013 - Initial README with basic information (need to expand) and a progress section.
 
