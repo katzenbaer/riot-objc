@@ -42,7 +42,7 @@ NSError *error;
 BLChampionListDto *champions = [api requestChampionsFreeToPlay:true Error:&error];
 ```
 
-#### Error Handling)
+#### Error Handling
 Make sure to check for errors, which can be of the codes: `AUTHENTICATION_ERROR`, `RESPONSE_ERROR`, or `PARSE_ERROR` (these are predefined constants you can use if you `#import "BLRiotAPI.h"`), and handle them gracefully,
 ```objc
 NSError *error;
