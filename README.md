@@ -57,8 +57,10 @@ Make sure to check for errors, which can be of the codes: `AUTHENTICATION_ERROR`
 NSError *error;
 ...
 if (error) {
-  if (error.code == AUTHENTICATION_ERROR) {
+  if ([error.domain isEqual:AUTHENTICATION_ERROR]) {
     NSLog(@"Oops! I forgot to add my API key into BLRiotAPI.h!");
+  } else if ([error.domain isEqual:RESPONSE_ERROR] && error.code == 404) {
+    NSLog(@"Champion does not exist!");
   }
 }
 ```
