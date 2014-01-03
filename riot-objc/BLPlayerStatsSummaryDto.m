@@ -12,13 +12,7 @@
 
 - (id)initWithKVDictionary:(NSDictionary *)dict {
     if (self = [super initWithKVDictionary:dict]) {
-        NSMutableArray *aggregatedStats = [NSMutableArray array];
-        
-        for (NSDictionary *aggregatedStat in dict[@"aggregatedStats"]) {
-            [aggregatedStats addObject:[BLAggregatedStatDto newWithKVDictionary:aggregatedStat]];
-        }
-        
-        self.aggregatedStats = [NSArray arrayWithArray:aggregatedStats];
+        self.aggregatedStats = [BLAggregatedStatsDto newWithKVDictionary:dict[@"aggregatedStats"]];
     }
     return self;
 }

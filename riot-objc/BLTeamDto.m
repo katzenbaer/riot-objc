@@ -28,9 +28,6 @@
         // roster
         self.roster = [BLRosterDto newWithKVDictionary:dict[@"roster"]];
         
-        // teamId
-        self.teamId = [BLTeamIdDto newWithKVDictionary:dict[@"teamId"]];
-        
         // teamStatSummary
         self.teamStatSummary = [BLTeamStatSummaryDto newWithKVDictionary:dict[@"teamStatSummary"]];
     }

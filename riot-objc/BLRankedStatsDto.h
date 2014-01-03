@@ -14,7 +14,6 @@
 
 @property(nonatomic, strong) NSArray *champions;        // List of player stats summarized by champion.
 @property(nonatomic, strong) NSNumber *modifyDate;      // Date stats were last modified specified as epoch milliseconds.
-@property(nonatomic, strong) NSNumber *modifyDateStr;    // Human readable string representing date stats were last modified.
 @property(nonatomic, strong) NSNumber *summonerId;       // Summoner ID.
 
 @end

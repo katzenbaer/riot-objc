@@ -10,6 +10,8 @@
 
 #import "BLLeagueDto.h"
 
+#define API_LEAGUE  API_ENDPOINT @"/api/lol/%@/v2.2/league/by-summoner/%ld"
+
 @interface BLRiotLeagueAPI : BLRiotAPI
 
 - (NSDictionary *)requestLeaguesWithSummonerId:(NSNumber *)summonerId Error:(NSError **)error;

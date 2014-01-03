@@ -8,12 +8,11 @@
 
 #import "BLKeyValueObject.h"
 
-#import "BLTeamIdDto.h"
 #import "BLTeamStatDetailDto.h"
 
 @interface BLTeamStatSummaryDto : BLKeyValueObject
 
-@property (nonatomic, strong) BLTeamIdDto *teamId;
+@property (nonatomic, strong) NSString *fullId;
 @property (nonatomic, strong) NSSet *teamStatDetails;
 
 @end

@@ -10,6 +10,8 @@
 
 #import "BLTeamDto.h"
 
+#define API_TEAM                API_ENDPOINT @"/api/lol/%@/v2.2/team/by-summoner/%ld"
+
 @interface BLRiotTeamAPI : BLRiotAPI
 
 - (NSArray *)requestTeamsWithSummonerId:(NSNumber *)summonerId Error:(NSError **)error;

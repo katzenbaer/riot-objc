@@ -13,6 +13,12 @@
 #import "BLSummonerDto.h"
 #import "BLSummonerNameListDto.h"
 
+#define API_SUMMONER            API_ENDPOINT @"/api/lol/%@/v1.2/summoner/%ld"
+#define API_SUMMONER_BYNAME     API_ENDPOINT @"/api/lol/%@/v1.2/summoner/by-name/%@"
+#define API_SUMMONERS           API_ENDPOINT @"/api/lol/%@/v1.2/summoner/%@/name"
+#define API_SUMMONER_MASTERY    API_SUMMONER @"/mastery"
+#define API_SUMMONER_RUNES      API_SUMMONER @"/runes"
+
 @interface BLRiotSummonerAPI : BLRiotAPI
 
 - (BLMasteryPagesDto *)requestSummonerMasteriesWithSummonerId:(NSNumber *)summonerId

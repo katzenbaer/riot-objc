@@ -15,8 +15,7 @@
 @interface BLGameDto : BLKeyValueObject
 
 @property (nonatomic, strong) NSNumber *championId; // Champion ID assocaited with game.
-@property (nonatomic, strong) NSNumber *createDate; // Date game was played specified as epoch milliseconds.
-@property (nonatomic, strong) NSString *createDateStr; // Human readable string representing date game was played.
+@property (nonatomic, strong) NSNumber *createDate; // Date that end game data was recorded, specified as epoch milliseconds.
 @property (nonatomic, strong) NSArray *fellowPlayers; // Other players assocaited with the game.
 @property (nonatomic, strong) NSNumber *gameId; // Game ID.
 @property (nonatomic, strong) NSString *gameMode; // Game mode.

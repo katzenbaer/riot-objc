@@ -22,6 +22,7 @@
             [_dict removeObjectForKey:@"id"];
             [_dict setObject:val forKey:@"_id"];
         }
+        
         [self setValuesForKeysWithDictionary:_dict];
     }
     return self;

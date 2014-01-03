@@ -19,14 +19,12 @@
 @property (nonatomic, strong) NSNumber *lastPlayed;
 @property (nonatomic, strong) NSString *leagueName;
 @property (nonatomic, strong) NSNumber *leaguePoints;
-@property (nonatomic, strong) NSNumber *losses;
 @property (nonatomic, strong) BLMiniSeriesDto *miniSeries;
 @property (nonatomic, strong) NSString *playerOrTeamId;
 @property (nonatomic, strong) NSString *playerOrTeamName;
 @property (nonatomic, strong) NSString *queueType;
 @property (nonatomic, strong) NSString *rank;
 @property (nonatomic, strong) NSString *tier;
-@property (nonatomic, strong) NSNumber *timeUntilDecay;
 @property (nonatomic, strong) NSNumber *wins;
 
 @end

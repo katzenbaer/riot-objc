@@ -58,8 +58,7 @@
         } else {
             NSLog(@"Object class: %@", [summoner class]);
             
-            NSArray *props = @[@"_id", @"name", @"profileIconId", @"revisionDate",
-                               @"revisionDateStr", @"summonerLevel"];
+            NSArray *props = @[@"_id", @"name", @"profileIconId", @"revisionDate", @"summonerLevel"];
             for (NSString *p in props) {
                 NSLog(@"\t%@: %@", p, [summoner valueForKey:p]);
             }
@@ -82,7 +81,7 @@
         } else {
             NSLog(@"Object class: %@", [stats class]);
             
-            NSArray *props = @[@"playerStatSummaryType", @"wins", @"losses", @"modifyDate", @"modifyDateStr"];
+            NSArray *props = @[@"playerStatSummaryType", @"wins", @"losses", @"modifyDate"];
             for (BLPlayerStatsSummaryDto *stat in stats.playerStatSummaries) {
                 NSLog(@"Player Stat Summary w/ Class: %@", [stat class]);
                 NSLog(@"================================");
@@ -128,7 +127,7 @@
             for (BLGameDto *game in recentGames.games) {
                 count++;
                 NSLog(@"Game #%d:", count);
-                NSArray *props = @[@"championId", @"createDateStr", @"gameId", @"gameMode",
+                NSArray *props = @[@"championId", @"gameId", @"gameMode",
                                    @"gameType", @"subType", @"level", @"mapId", @"spell1",
                                    @"spell2", @"teamId"];
                 for (NSString *p in props) {
@@ -163,7 +162,7 @@
             [leagues enumerateKeysAndObjectsUsingBlock:^(NSString *key, BLLeagueDto *league, BOOL *stop) {
                 NSLog(@"#### %@", key);
                 
-                NSArray *props = @[@"name", @"queue", @"tier", @"timestamp"];
+                NSArray *props = @[@"name", @"queue", @"tier"];
                 for (NSString *p in props) {
                     NSLog(@"%@: %@", p, [league valueForKey:p]);
                 }
@@ -175,7 +174,7 @@
                     
                     if (item.miniSeries != nil) {
                         NSLog(@"\t\t##### MiniSeriesDto");
-                        NSArray *props = @[@"progress", @"target", @"wins", @"losses", @"timeLeftToPlayMillis"];
+                        NSArray *props = @[@"progress", @"target", @"wins"];
                         for (NSString *p in props) {
                             NSLog(@"\t\t%@: %@", p, [item.miniSeries valueForKey:p]);
                         }
@@ -199,7 +198,7 @@
             for (BLTeamDto *team in teams) {
                 NSLog(@"## %@", team.name);
                 
-                NSArray *props = @[@"createDate", @"lastGameDate", @"lastJoinDate", @"lastJoinedRankedTeamQueueDate", @"modifyDate", @"secondLastJoinDate", @"status", @"tag", @"thirdLastJoinDate", @"timestamp"];
+                NSArray *props = @[@"createDate", @"lastGameDate", @"lastJoinDate", @"lastJoinedRankedTeamQueueDate", @"modifyDate", @"secondLastJoinDate", @"status", @"tag", @"thirdLastJoinDate"];
                 
                 for (NSString *p in props) {
                     NSLog(@"%@: %@  ", p, [team valueForKey:p]);
@@ -239,7 +238,7 @@
                 NSLog(@"### Roster:\n**Owner**: %ld  \n**Players:**  \n%@", team.roster.ownerId.longValue, memberString);
                 
                 // teamId
-                NSLog(@"### Team ID: %@", team.teamId.fullId);
+                NSLog(@"### Team ID: %@", team.fullId);
                 
                 // teamStatSummary
                 NSLog(@"### Team Stat Summary:");
@@ -248,10 +247,7 @@
 **Average Games Played:** %d  \n \
 **Wins:** %d  \n \
 **Losses:** %d  \n \
-**Rating:** %d  \n \
-**Max Rating:** %d  \n \
-**Seed Rating:** %d  \n \
-**Team Stat Type:** %@  \n", detail.averageGamesPlayed.integerValue, detail.wins.integerValue, detail.losses.integerValue, detail.rating.integerValue, detail.maxRating.integerValue, detail.seedRating.integerValue, detail.teamStatType);
+**Team Stat Type:** %@  \n", detail.averageGamesPlayed.integerValue, detail.wins.integerValue, detail.losses.integerValue, detail.teamStatType);
                 }
             }
         }

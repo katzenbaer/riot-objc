@@ -7,7 +7,10 @@
 //
 
 #import "BLRiotAPI.h"
+
 #import "BLChampionListDto.h"
+
+#define API_CHAMPION    API_ENDPOINT @"/api/lol/%@/v1.1/champion"
 
 @interface BLRiotChampionAPI : BLRiotAPI
 

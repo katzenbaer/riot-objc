@@ -16,7 +16,6 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *queue;
 @property (nonatomic, strong) NSString *tier;
-@property (nonatomic, strong) NSNumber *timestamp;
 
 + (NSArray *)queues;
 + (NSArray *)tiers;

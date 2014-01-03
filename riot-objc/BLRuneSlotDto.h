@@ -16,7 +16,7 @@ typedef enum {
     SEAL,
     GLYPH,
     QUINTESSENCE,
-    } RuneType_t;
+} RuneType_t;
 
 @interface BLRuneSlotDto : BLKeyValueObject
 

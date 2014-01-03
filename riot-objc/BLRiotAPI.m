@@ -68,7 +68,6 @@
     [_params addObject:API_KEY];
     NSString *s = [[url absoluteString] stringByAppendingFormat:@"?%@", [_params componentsJoinedByString:@"&"]];
     
-    NSLog(@"Requesting from '%@'", s);
     // Create NSURLRequest and NSURLConnection
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:s]];
     NSHTTPURLResponse *response = nil;
