@@ -2,13 +2,13 @@ riot-objc
 =========
 Objective-C wrapper for the Riot Games API beta that abstracts both endpoint requests and responses.  
 
-**Compatability:**  
+**Compatibility:**  
  * champion-v1.1 [NA, EUW, EUNE]
- * game-v1.1 [NA, EUNE, EUW]
- * league-v2.1 [NA, EUNE, BR, TR, EUW]
- * stats-v1.1 [EUW, NA, EUNE]
- * summoner-v1.1 [EUNE, EUW, NA]
- * team-v2.1 [TR, NA, EUNE, EUW, BR]
+ * game-v1.2 [NA, EUNE, EUW]
+ * league-v2.2 [NA, EUNE, BR, TR, EUW]
+ * stats-v1.2 [EUW, NA, EUNE]
+ * summoner-v1.2 [EUNE, EUW, NA]
+ * team-v2.2 [TR, NA, EUNE, EUW, BR]
 
 Getting Started
 ---------------
@@ -57,7 +57,7 @@ Make sure to check for errors, which can be of the codes: `AUTHENTICATION_ERROR`
 NSError *error;
 ...
 if (error) {
-  if (error.code == AUTHENTICATION_ERROR) {
+  if ([error.domain isEqualToString:AUTHENTICATION_ERROR]) {
     NSLog(@"Oops! I forgot to add my API key into BLRiotAPI.h!");
   }
 }
@@ -147,6 +147,7 @@ If you want to help contribute, just open an Issue to let me know what you're wo
 
 README Changelog
 ----------------
+ * 01/13/2014 - Updated to reflect the current API version supported in the dev branch.
  * 12/17/2013 - Added a detailed API wrapper explanation in the **Usage** section.
  * 12/17/2013 - Removed content regarding riot-objc being incomplete, since it's fully capable now.
  * 12/15/2013 - Added information re: how to add your developer key in the code.
