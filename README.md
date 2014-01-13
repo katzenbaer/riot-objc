@@ -4,7 +4,7 @@ Objective-C wrapper for the Riot Games API beta that abstracts both endpoint req
 
 **Compatibility:**  
  * champion-v1.1 [NA, EUW, EUNE]
- * game-v1.2 [NA, EUNE, EUW]
+ * game-v1.3 [NA, EUNE, EUW]
  * league-v2.2 [NA, EUNE, BR, TR, EUW]
  * stats-v1.2 [EUW, NA, EUNE]
  * summoner-v1.2 [EUNE, EUW, NA]

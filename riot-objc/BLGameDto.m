@@ -18,13 +18,7 @@
         }
         
         self.fellowPlayers = [NSArray arrayWithArray:fellowPlayers];
-        
-        NSMutableArray *statistics = [NSMutableArray array];
-        for (NSDictionary *stat in dict[@"statistics"]) {
-            [statistics addObject:[BLRawStatDto newWithKVDictionary:stat]];
-        }
-        
-        self.statistics = [NSArray arrayWithArray:statistics];
+        self.stats = [BLRawStatsDto newWithKVDictionary:dict[@"stats"]];
     }
     return self;
 }

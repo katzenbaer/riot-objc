@@ -10,12 +10,13 @@
 #import "BLKeyValueObject.h"
 
 #import "BLPlayerDto.h"
-#import "BLRawStatDto.h"
+#import "BLRawStatsDto.h"
 
 @interface BLGameDto : BLKeyValueObject
 
 @property (nonatomic, strong) NSNumber *championId; // Champion ID assocaited with game.
 @property (nonatomic, strong) NSNumber *createDate; // Date that end game data was recorded, specified as epoch milliseconds.
+@property (nonatomic, strong) NSString *createDateAsDate; // !!! Undocumented
 @property (nonatomic, strong) NSArray *fellowPlayers; // Other players assocaited with the game.
 @property (nonatomic, strong) NSNumber *gameId; // Game ID.
 @property (nonatomic, strong) NSString *gameMode; // Game mode.
@@ -25,7 +26,7 @@
 @property (nonatomic, strong) NSNumber *mapId; // Map ID.
 @property (nonatomic, strong) NSNumber *spell1; // ID of first summoner spell.
 @property (nonatomic, strong) NSNumber *spell2; // ID of second summoner spell.
-@property (nonatomic, strong) NSArray *statistics; // Statistics associated with the game for this summoner.
+@property (nonatomic, strong) BLRawStatsDto *stats; // Statistics associated with the game for this summoner.
 @property (nonatomic, strong) NSString *subType; // Game sub-type.
 @property (nonatomic, strong) NSNumber *teamId; // Team ID associated with game.
 

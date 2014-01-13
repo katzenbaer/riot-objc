@@ -9,11 +9,11 @@
 #import "BLRiotAPI.h"
 
 #import "BLPlayerDto.h"
-#import "BLRawStatDto.h"
+#import "BLRawStatsDto.h"
 #import "BLGameDto.h"
 #import "BLRecentGamesDto.h"
 
-#define API_GAME    API_ENDPOINT @"/api/lol/%@/v1.2/game/by-summoner/%ld/recent"
+#define API_GAME    API_ENDPOINT @"/api/lol/%@/v1.3/game/by-summoner/%ld/recent"
 
 @interface BLRiotGameAPI : BLRiotAPI
 

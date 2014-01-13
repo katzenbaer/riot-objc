@@ -140,9 +140,14 @@
                 }
                 
                 NSLog(@"\t#### Statistics");
-                for (BLRawStatDto *s in game.statistics) {
-                    NSLog(@"\t%@: %@", s.name, s.value);
-                }
+                NSLog(@"\t\tTime Played: %dm %ds", game.stats.timePlayed.integerValue / 60, game.stats.timePlayed.integerValue % 60);
+                NSLog(@"\t\tSpell 1 Cast Count: %@", game.stats.spell1Cast);
+                NSLog(@"\t\tSpell 2 Cast Count: %@", game.stats.spell2Cast);
+                NSLog(@"\t\tSpell 3 Cast Count: %@", game.stats.spell3Cast);
+                NSLog(@"\t\tSpell 4 Cast Count: %@", game.stats.spell4Cast);
+                NSLog(@"\t\tKills: %@", game.stats.championsKilled);
+                NSLog(@"\t\tDeaths: %@", game.stats.numDeaths);
+                NSLog(@"\t\tAssists: %@", game.stats.assists);
             }
         }
     }
